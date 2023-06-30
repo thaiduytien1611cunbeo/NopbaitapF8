@@ -1,0 +1,29 @@
+.size {
+    background-color: rgb(129, 129, 202);
+    color: white;
+    width: 170px;
+    height: 40px;
+    border: none;
+    font-size: 20px;
+}
+div {
+    text-align: center;
+}
+h1 {
+    font-size: 60px;
+}
+span {
+    color: rgb(72, 148, 235);
+}
+p {
+    font-size: 23px;
+}
+.button > button {
+    background-color: black;
+    border-radius: 5px;
+    border: solid;
+    color: white;
+    width: 120px;
+    height: 40px;
+    margin: 5px;
+}

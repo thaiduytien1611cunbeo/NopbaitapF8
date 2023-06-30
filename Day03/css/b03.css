@@ -1,0 +1,9 @@
+input, button, select {
+    border: 2px rgb(113, 113, 195) solid;
+}
+.button {
+    margin-left: 110px;
+}
+select {
+    height: 23px;
+}

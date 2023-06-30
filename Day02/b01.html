@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select, input {
+            width: 300px;
+            height: 25px;
+            border: 2px solid rgb(150, 125, 125);
+        }
+        select {
+            width: 310px;
+            height: 30px;
+        }
+        td {
+            padding: 10px;
+            padding-right: 50px;
+        }
+        label {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        html {
+            background-color: rgb(243, 240, 240);
+        }
+
+        button {
+            color: aliceblue;
+            background-color: rgb(59, 117, 211);
+            border: none;
+            height: 45px;
+            width: 220px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Try a free sample</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, accusamus.</p>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <label for="firstname"><b>First name</b></label>
+                <div><input type="text" name="firstname" id="firstname" placeholder="John"></div>
+            </td>
+            <td>
+                <label for="lastname"><b>Last name</b></label>
+                <div><input type="text" name="lastname" id="lastname" placeholder="Smith"></div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <label for="email"><b>Email address</b></label>
+                <div><input type="email" name="email" id="email" placeholder="John@example.com"></div>
+            </td>
+            <td>
+                <label for="Address"><b>Address</b></label>
+                <div><input type="text" name="Address" id="Address" placeholder="Silk St"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="city"><b>City</b></label>
+                <div><input type="text" name="city" id="city" placeholder="London"></div>
+            </td>
+            <td>
+                <label for="state"><b>State</b> <span style="color: antiquewhite;">(optinal)</span></label>
+                <div><input type="text" name="state" id="state" placeholder=""></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="code"><b>ZIP code</b></label>
+                <div><input type="text" name="code" id="code" placeholder="EC2Y 8DS"></div>
+            </td>
+            <td>
+                <label for="country"><b>Country</b></label>
+                <div>
+                    <select name="country" id="country">
+                        <option value="VietNam">United Kingdom</option>
+                        <option value="">VietNam</option>
+                        <option value="">ThaiLan</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <button>
+        SEND ME FREE COFFEE
+    </button>
+</body>
+</html>

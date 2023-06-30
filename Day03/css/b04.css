@@ -1,0 +1,40 @@
+.title {
+    margin-left: 20px;
+    width: 53%;
+    height: 30px;
+    border: 2px rgb(118, 100, 13) solid;
+}
+button + button {
+    border: none;
+    background-color: white;
+    color: rgb(118, 100, 13);
+}
+
+#united {
+    width: 140px;
+    height: 30px;
+    border: none;
+    background-color:rgb(118, 100, 13);
+    color: white;
+}
+#london, #singapore, #hongkong {
+    width: 120px;
+}
+.advertisement {
+    margin-left: 20px;
+    margin-top: 30px;
+    float: left;
+    background-color: rgb(232, 232, 232);
+    width: 370px;
+    height: 200px;
+}
+.map {
+    width: 500px;
+    float: left;
+    margin-top: 30px;
+}
+.content {
+    padding-left: 50px;
+}
+
+

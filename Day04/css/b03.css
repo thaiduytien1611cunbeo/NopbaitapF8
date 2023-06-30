@@ -1,0 +1,86 @@
+h2 {
+    font-size: 40px;
+}
+
+section, nav, h2 {
+    text-align: center;
+}
+
+input {
+    display: none;
+}
+
+label > span {
+    background-color: aliceblue;
+    padding: 10px 20px 10px 20px;
+}
+
+#skincare:checked ~ label:nth-of-type(1) > span {
+    background-color: rgb(9, 9, 123);
+    color: white;
+    padding: 10px 20px 10px 20px;
+}
+
+#haircare:checked ~ label:nth-of-type(2) > span {
+    background-color: rgb(9, 9, 123);
+    color: white;
+    padding: 10px 20px 10px 20px;
+}
+
+#cosmetics:checked ~ label:nth-of-type(3) > span {
+    background-color: rgb(9, 9, 123);
+    color: white;
+    padding: 10px 20px 10px 20px;
+}
+
+#fragrance:checked ~ label:nth-of-type(4) > span {
+    background-color: rgb(9, 9, 123);
+    color: white;
+    padding: 10px 20px 10px 20px;
+}
+
+#makeup:checked ~ label:nth-of-type(5) > span {
+    background-color: rgb(9, 9, 123);
+    color: white;
+    padding: 10px 20px 10px 20px;
+}
+
+
+.product div > img {
+    width: 45px;
+}
+
+.product > img {
+    width: 150px;
+    margin: 10px;
+}
+
+.product img:hover {
+    cursor: pointer;
+} 
+
+.list-product {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+td > img:nth-child(2),
+.product > div > img  {
+    display: none;
+}
+
+.product:hover > img:nth-child(1) {
+    display: none;
+}
+
+.product:hover > img:nth-child(2),
+.product:hover > div > img {
+    border: 2px solid;
+    display:inline-block;
+    cursor: pointer;
+}
+
+
+
+

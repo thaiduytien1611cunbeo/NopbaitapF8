@@ -1,0 +1,54 @@
+.header {
+    padding-left: 30px;
+    padding-right: 100px;
+}
+.input {
+    height: 30px;
+    width: 100%;
+    border: rgb(152, 164, 50) 1px solid;
+}
+.icon {
+    width: 20px;
+    padding-right: 20px ;
+}
+p {
+    color: rgb(152, 164, 50);
+}
+aside {
+    float: left;
+    padding-left: 30px;
+    padding-right: 100px;
+}
+main {
+    float: left;
+    width: 600px;
+}
+div {
+    padding-top: 10px;
+}
+hr {
+    width: 65px;
+    height: 2px;
+    text-align: left;
+    margin-left: 0;
+    background-color:rgb(249, 249, 36);
+}
+textarea {
+    border: rgb(152, 164, 50) 1px solid;
+    color: rgb(150, 138, 123);
+    height: 70px;
+    width: 100%;
+}
+button {
+    background-color: rgb(27, 151, 197);
+    color: aliceblue;
+    border: none;
+    width: 150px;
+    height: 30px;
+}
+p {
+    display: inline;
+}
+li {
+    padding-bottom: 30px;
+}

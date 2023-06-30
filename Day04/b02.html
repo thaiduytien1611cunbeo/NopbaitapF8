@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form đặt bàn</title>
+    <link rel="stylesheet" href="css/b02.css">
+    <link href='https://fonts.googleapis.com/css?family=Alfa Slab One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'>
+</head>
+<body>
+    <section>
+        <h2>Reservation</h2>
+        <h3>Book your table</h3>
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" name="name" placeholder="NAME">
+                    </td>
+                    <td>
+                        <input type="email" name="email" placeholder="EMAIL">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="date-time">
+                            <label>
+                                <input type="radio" name="date-time"  class="radio">
+                                <input type="date" name="date_input" id="date">
+                                <span class="placeholder">DATE</span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="date-time">
+                            <label>
+                                <input type="radio" name="date-time"  class="radio">
+                                <input type="time" name="date_time" id="time">
+                                <span class="placeholder">TIME</span>
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number" name="people" placeholder="PEOPLE">
+                    </td>
+                    <td>
+                        <button>
+                            Find A Table
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </section>
+</body>
+</html>
