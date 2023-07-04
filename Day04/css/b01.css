@@ -1,15 +1,24 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } */
 .form-email {
     background-color: rgb(61, 58, 85);
     border-radius: 5px;
-    height: 200px;
+    height: 170px;
     padding-left: 30px;
     padding-top: 20px;
 }
 span {
     color: rgb(234, 160, 0);
 }
-p, h2 {
+.content {
     color: white;
+    line-height: 1.5;
+}
+.title {
+    color: #ddd;
 }
 #email {
     width: 25%;

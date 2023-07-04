@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body {
+    margin-bottom: 100px;
+}
+
+section {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.form {
+    margin-top: 40px;
+}
+.content h2 {
+    font-family: 'Lobster', sans-serif;
+    font-size: 50px;
+    font-weight: 100;
+}
+p span {
+    color: red;
+}
+.content p {
+    margin-top: 30px;
+    font-family: 'Lato', sans-serif;
+}
+
+input, 
+.select,
+.message {
+    padding: 15px;
+    margin-left: -5px;
+    width: 50%;
+    border: 2px solid rgb(117, 117, 117);
+    
+}
+textarea, select {
+    color: rgb(117, 117, 117);
+}
+.boxed {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.icon-form {
+    position: absolute;
+    left: 0;
+    background-color: rgb(117, 117, 117);
+    color: white;
+    padding: 15px;
+    padding-bottom: 17.7px;
+}
+
+.form-input:focus ~ .icon-form {
+    background-color: black;
+}
+
+.form-input {
+    margin-left: 40px;
+}
+
+.message {
+    margin-left: 45px;
+}
+
+.fa-message {
+    background-color: rgb(117, 117, 117);
+    padding: 15px;
+    position: absolute;
+    padding-bottom: 157px;
+}
+
+.icon-star,
+.fa-angles-down,
+.form-input:focus ~ .fa-x,
+.form-input:hover ~ .fa-x {
+    position: absolute;
+    color: rgb(117, 117, 117);
+    left: 500px;
+    top: 15px;
+}
+
+.form-input:focus ~ .icon-star, 
+.form-input:hover ~ .icon-star{
+    color: white;
+}
+
+.fa-x {
+    color: white;
+}
+
+button {
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: red;
+    border: none;
+    margin-left: 190px;
+}
+
+#checkbox {
+    display: none;
+}
+
+.checkbox {
+    display: inline;
+    position: relative;
+}
+
+.checkbox::before {
+    content: '';
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid rgb(117, 117, 117);
+}
+
+.checkbox i {
+    position: absolute;
+    left: 5px;
+    top: -5px;
+    color: rgb(117, 117, 117);
+    display: none;
+}
+
+#checkbox:checked ~ i {
+    display: block;
+}
+
+
+
+
+

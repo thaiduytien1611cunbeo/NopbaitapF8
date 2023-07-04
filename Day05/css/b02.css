@@ -1,0 +1,31 @@
+.title {
+    background-color: rgb(22, 103, 195);
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+}
+span {
+    font-size: 20px;
+}
+img {
+    width: 15px;
+}
+.select div {
+    display: none;
+}
+
+.select input:checked ~ div {
+    display: block;
+}
+input {
+    display: none;
+}
+.select img:last-of-type {
+    display: none;
+}
+.select input:checked ~ h2 img:first-of-type {
+    display: none;
+}
+.select input:checked ~ h2 img:last-of-type {
+    display: inline;
+}
