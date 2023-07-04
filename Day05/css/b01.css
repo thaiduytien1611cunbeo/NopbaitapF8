@@ -55,7 +55,7 @@ textarea, select {
     background-color: rgb(117, 117, 117);
     color: white;
     padding: 15px;
-    padding-bottom: 17.7px;
+    padding-bottom: 18px;
 }
 
 .form-input:focus ~ .icon-form {
