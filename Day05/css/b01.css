@@ -83,7 +83,7 @@ textarea, select {
 .form-input:hover ~ .fa-x {
     position: absolute;
     color: rgb(117, 117, 117);
-    left: 500px;
+    left: 625px;
     top: 15px;
 }
 
