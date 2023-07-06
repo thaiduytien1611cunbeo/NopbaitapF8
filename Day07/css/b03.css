@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Asap', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@100&display=swap');
+
+header {
+    margin: 20px 7%;
+    font-size: 10px;
+}
+
+.list_items {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.item {
+    background-color: rgb(215, 214, 204);
+    margin: 0 8px;
+    font-size: 11px;
+    border-radius: 99px;
+    padding: 12px;
+}
+
+.item:hover {
+    background-color: rgb(150, 101, 3);
+    color: white;
+}
+
+input {
+    display: none;
+}
+
+.item label {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+input:checked + .item {
+    background-color: orangered;
+    color: white;
+}
+
+/* css items */
+
+.list_boxed {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.boxed {
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.list_boxed:nth-of-type(1) {
+    margin-left: 150px;
+}
+
+.boxed h3,
+.boxed p {
+    position: absolute;
+    color: white;
+}
+
+.boxed {
+    position: relative;
+}
+
+.boxed h3 {
+    top: 10%;
+    left: 5%;
+}
+
+.boxed p {
+    bottom: 15%;
+    left: 5%;
+}
+
