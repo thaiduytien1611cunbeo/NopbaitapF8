@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@200&display=swap');
+
+body {
+    background: url(http://uiwebsoft.com/justlog/login-one/images/login-bg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+}
+
+.form-login {
+    display: flex;
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 100px;
+    left: 50%;
+    height: 400px;
+}
+
+.boxed-left {
+    background-color: #ff574d;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    width: 40%;
+    position: relative;
+}
+
+.boxed-right {
+    background-color: white;
+    border: none;
+    border-radius: 0 10px 10px 0;
+}
+
+.boxed-left__title,
+.boxed-left__content  {
+    color: white;
+}
+
+.boxed-left__title {
+    margin-top: 70px;
+}
+
+.boxed-left__content,
+.boxed-left__button,
+.boxed-left__icon {
+    margin-top: 30px;
+}
+
+.boxed-left__button {
+    background-color: white;
+    color: #ff574d;
+    width: 130px;
+    height: 30px;
+    border: none;
+}
+
+.boxed-left__icon i {
+    background-color: rgba(125, 123, 123, 0.208);
+    width: 30px;
+    height: 30px;
+    color: white;
+    padding-top: 5px;
+}
+
+.right {
+    position: absolute;
+    background-color: white;
+    border: 1px solid gainsboro;
+    color: #ff574d;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding-top: 10px ;
+    font-size: 20px;
+    right: -20px;
+    top: 48%;
+}
+
+.boxed-right h2 {
+    margin-top: 40px;
+}
+
+.boxed-right h2 span {
+    color: #ff574d;
+}
+
+.boxed-right hr {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 42%;
+}
+
+.boxed-right__input > input {
+    width: 80%;
+    border: 2px solid gainsboro;
+    border-radius: 2px;
+    padding-left: 10px;
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.checked {
+    display: flex;
+    justify-content: space-between;
+    padding: 35px;
+    font-size: 12px;
+    margin-top: -50px;
+}
+
+
+.boxed-right__button {
+    width: 80%;
+    height: 35px;
+    background-color: #ff574d;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.boxed-right__button ~ p {
+    font-size: 12px;
+}

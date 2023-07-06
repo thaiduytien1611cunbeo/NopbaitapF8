@@ -1,0 +1,6 @@
+.triangle {
+    border-left: 50px solid blue;
+    border-right: 50px solid green;
+    border-bottom: 50px solid violet;
+    width: 0px;
+}
