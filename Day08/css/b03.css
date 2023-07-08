@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@100&family=Roboto:wght@100&display=swap');
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    padding: 15px 0;
+}
+
+.list_item {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 100px;
+}
+
+.item {
+    width: 30%;
+    height: 38vh;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+} 
+
+.item h3 {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.item img {
+    width: 100px;
+}
+
+.item p {
+    font-size: 10px;
+}
+
+.item button {
+    width: 100px;
+    color: white;
+    background-color: rgb(0, 0, 137);
+    height: 30px;
+    border: none;
+    position: absolute;
+    top: calc(100% - 40px);
+    left: calc(50% - 50px);
+    cursor: pointer;
+}
+
+.item button:active {
+    background-color: rgba(223, 64, 64, 0.683);
+    color: black;
+}
+
+.item button:hover + img {
+    width: 120px;
+}
+
