@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.list_item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.item {
+    border: 2px solid rgba(158, 152, 152, 0.352);
+    margin: 20px;
+    width: 25vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}
+
+.item i {
+    font-size: 40px;
+    color: rgba(161, 77, 4, 0.692);
+    padding-bottom: 20px;
+}
+
+
+.item p {
+    padding-top: 10px;
+    font-size: 14px;
+    color: rgb(143, 133, 133);
+}
+
