@@ -100,4 +100,13 @@ body {
     display: block;
 }
 
+.list::before {
+    content: "";
+    border: 10px solid;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    top: -18px;
+    left: 10px;
+}
+
 
