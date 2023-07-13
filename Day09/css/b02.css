@@ -14,7 +14,7 @@
 
 .item {
     border: 2px solid rgba(158, 152, 152, 0.352);
-    margin: 20px;
+    margin: 10px;
     width: 25vw;
     height: 40vh;
     display: flex;
@@ -34,5 +34,11 @@
     padding-top: 10px;
     font-size: 14px;
     color: rgb(143, 133, 133);
+}
+
+.item:hover {
+    background-image: url(../../imageANDicon/onepice1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
