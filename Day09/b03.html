@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài tập 3</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/b03.css">
 </head>
 <body>
@@ -17,25 +18,35 @@
         <form>
             <div class="form">
 
-                <div>
+                <div class="box">
                     <input type="text" id="first_name">
                     <label for="first_name">First Name*</label>
+                </div>
+                <div class="box">
                     <input type="text" id="last_name">
                     <label for="last_name">Last Name*</label>
                 </div>
-                <div>
+                <div class="box">
                     <input type="email" id="email">
                     <label for="email">Email*</label>
-                    <section>
-                        <option value=""></option>
-                    </section>
                 </div>
-                <div>
-                    <textarea cols="30" rows="10">
-
-                    </textarea>
+                <div class="box_select">
+                    <span class="select">Sales</span>
+                    <i class="fa-solid fa-angle-down"></i>
+                    <div class="option">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                    </div>
+                </div>
+                
+                <div class="box_textarea">
+                    <textarea>Meassage*</textarea>
                 </div>
 
+            </div>
+            <div class="btn">
+                <button>Send meassage</button>
             </div>
         </form>
 
