@@ -21,9 +21,23 @@
     position: relative;
 }
 
+.background {
+    width: 346px;
+    height: 246px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 2s ease, background-color 2s ease;
+}
+
+.item:hover .background {
+    background-color: rgba(88, 176, 126, 0.438);
+    opacity: 1;
+}
+
 .item:hover {
     background-image: url(../../imageANDicon/job01.jpg);
-    opacity: inherit;
 }
 
 .item i {
@@ -64,7 +78,7 @@
     position: absolute;
     bottom: -5px;
     transition: transform .5s ease;
-    /* visibility: hidden; */
+    visibility: hidden;
     color: white;
 } 
 
@@ -84,7 +98,7 @@
 
 .item:hover .content .icon {
     transform: translateY(-30px);
-    /* visibility:unset; */
+    visibility:visible;
 }
 
 .item:hover .content .icon a {
