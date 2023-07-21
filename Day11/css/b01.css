@@ -1,0 +1,7 @@
+.content {
+    width: 0px;
+    border-top: 100px solid green;
+    border-left: 0px solid blueviolet;
+    border-bottom: 0px solid blue;
+    border-right: 25px solid red;
+}
