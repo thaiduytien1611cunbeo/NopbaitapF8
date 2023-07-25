@@ -75,6 +75,7 @@ input:nth-child(4):checked ~ .list_item label:nth-child(4) span span {
     transition: opacity 0.3s ease, background-color 0.3s ease, transform  0.3s ease;
     transform-origin: top;
     overflow-x: auto;
+    /* perspective: 1000px; */
 }
 
 .list_item label .content h2 {

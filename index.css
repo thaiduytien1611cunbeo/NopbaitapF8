@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* --title-color: rgb(86, 0, 86);
+    --title-item-color: rgb(178, 49, 178);
+    --border-item: purple;
+    --background_hover: rgb(173, 18, 173);
+    --item-link-color: rgba(104, 32, 104, 0.852); */
+
+    --title-color: rgb(35, 154, 62);
+    --title-item-color: rgb(49, 178, 75);
+    --border-item: rgb(0, 128, 17);
+    --item-link-color: rgb(32, 104, 40);
+    --background_hover: rgba(39, 178, 69, 0.886);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@100&family=Inter:wght@100&family=Roboto:wght@100&family=Space+Grotesk:wght@500&display=swap');
+
+body {
+    width: 100%;
+    height: fit-content;
+    background: url(/imageANDicon/onepicewano.jpg) no-repeat;
+    background-size: cover;
+    background-position: right;
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    color: var(--title-color);
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.list-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.item {
+    width: 20%;
+    height: 120px;
+    min-width: 150px;
+    max-width: 250px;
+    background-color: white;
+    border: 2px var(--border-item) solid;
+    border-radius: 10px;
+    padding: 5px 20px;
+    transition: background-color 0.3s linear;
+}
+
+.item h2 {
+    color: var(--title-item-color);
+    text-align: center;
+}
+
+.item ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    height: 80px;
+    align-items: center;
+}
+
+.item ul li a {
+    color: var(--item-link-color);
+}
+
+.item:hover {
+    background-color: var(--background_hover);
+    border: 2px white solid;
+}
+
+.item:hover h2,
+.item:hover a {
+    color: white;
+}   
