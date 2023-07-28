@@ -1,0 +1,469 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+$containerWidth: 1200px;
+$columnSpace: 200px;
+$containerPadding: 20px;
+
+.container {
+    max-width: $containerWidth;
+    margin: 0 auto;
+    padding: 0 $containerPadding;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 calc(-1 * $columnSpace / 2);
+}
+  
+.row [class^="col-"] {
+    $columnNumber: calc(12 / var(--column-size));
+    $columnWidth: calc(100% / $columnNumber);
+    flex-basis: $columnWidth;
+    max-width: $columnWidth;
+    padding: 0 calc($columnSpace / 2);
+}
+
+$breakpoints: (
+    sm : 500,
+    md : 600,
+	lg : 1365,
+	xl : 1500,
+);
+
+@mixin column($name: "") {
+    $prefix: "col";
+  
+    @if ($name != "") {
+      $prefix: $prefix + "-" + $name;
+    }
+  
+    @for $i from 1 through 12 {
+      .#{$prefix}-#{$i} {
+        --column-size: #{$i};
+        $columnNumber: calc(12 / var(--column-size));
+        $columnWidth: calc(100% / $columnNumber);
+        flex-basis: $columnWidth;
+        max-width: $columnWidth;
+        padding: 0 calc($columnSpace / 2);
+      }
+    }
+  }
+  
+  @include column();
+  
+  @each $name, $breakpoint in $breakpoints {
+    @media screen and (min-width: #{$breakpoint}px) {
+      @include column($name);
+    }
+  }
+
+// CODE
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Titillium+Web:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Rajdhani:wght@300&family=Titillium+Web:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Rajdhani:wght@300;400&family=Titillium+Web:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Rajdhani:wght@300;400;600&family=Titillium+Web:wght@900&display=swap');
+
+.landing {
+    overflow: hidden;
+}
+
+.landing {
+    .background__left {
+        width: 100%;
+        height: 100%;
+        background: url(../../imageANDicon/landing-background.jpg) no-repeat;
+        background-size: cover;
+        background-position: left bottom;
+        position: fixed;
+        z-index: -1;
+    }
+    .background__right {
+        width: 64%;
+        height: 140%;
+        border-radius: 50%;
+        background: url(../../imageANDicon/dot-texture.png) repeat 0 0 #fff;
+        position: fixed;
+        top: -20%;
+        right: -32%;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .container {
+        .row {
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            input {
+                &.login, &.register {
+                    display: none;
+                }
+                &.login:checked ~ .box .btn a:first-child label,
+                &.register:checked ~ .box .btn a:last-child label {
+                    background-color: white;
+                    color: black; 
+                }
+                &.register:checked ~ .box .btn a:first-child label {
+                    background-color: transparent;
+                    color: white;
+                }
+
+                // translate login <--> register 
+
+                &.login:checked ~ .box .box-login-register {
+                    .box-register {
+                        display: none;
+                    }
+                    .box-login {
+                        opacity: 1;
+                    }
+                }
+
+                &.register:checked ~ .box .box-login-register {
+                    .box-login {
+                        display: none;
+                        opacity: 0;
+                    }
+                    .box-register {
+                        display: flex;
+                        opacity: 1;
+                    }
+                }
+
+            }
+
+            .box {
+                @extend .col-6;
+                font-family: 'Rajdhani', sans-serif;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                &-content {
+                    color: white;
+                    width: 584px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 10%;
+                    h1 {
+                        margin-top: -100px;
+                    }
+                    h1 span {
+                        font-family: 'Titillium Web', sans-serif;
+                        font-size:120px;
+                        line-height: 1em;
+                    }
+                    p {
+                        margin: 0 auto;
+                        max-width: 85%;
+                        font-size: 18px;
+                        font-weight: 900px;
+                    }
+                    h1 + p {
+                        margin-top: 40px;
+                    }
+                    h1 + p + p {
+                        margin-bottom: 60px;
+                    }
+                    .btn {
+                        label {
+                            font-size: 25px;
+                            display: inline-block;
+                            height: 60px;
+                            width: 200px;
+                            border: 1px solid white;
+                            text-decoration: none;
+                            color: white;
+                            line-height: 60px;
+                            font-weight: 900;
+                        }
+                        a:first-child label {
+                            border-radius: 10px 0 0 10px;
+                            background-color: white;
+                            color: black;
+                        }
+                        a:last-child label {
+                            border-radius: 0 10px 10px 0;
+                            margin-left: -5px;
+                        }
+                    }
+                    
+                }
+
+                &-login-register {
+                    display: flex;
+                    align-items: center;
+                    width: 484px;
+                    position: absolute;
+                    top: 0;
+                    right: 10%;
+                    height: 100%;
+                    .rocket {
+                        position: absolute;
+                        width: 150px;
+                        top: -30px;
+                        left: -50px;
+                    }
+                    .box-login {
+                        position: relative;
+                        height: 600px;
+                        background-color: white;
+                        display: flex;
+                        flex-direction: column;
+                        text-align: center;
+                        padding: 0 60px;
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                        border-radius: 20px;
+                        transition: opacity 0.3s linear;
+                        h2 {
+                            font-size: 30px;
+                            font-weight: 900;
+                            margin: 50px 0;
+                        }
+                        .box-login-input {
+                            position: relative;
+                            padding: 15px 0;
+                            input {
+                                width: 100%;
+                                height: 60px;
+                                padding-left: 20px;
+                                border-radius: 10px;
+                                outline: red;
+                                font-size: 25px;
+                                border: 1px solid rgba(183, 179, 179, 0.557);
+                                transition: border-color .2s ease-in-out;
+                                overflow: visible;
+                                // &.remember {
+                                //     display: none;
+                                // }
+                                &:focus,
+                                &:not(:placeholder-shown) {
+                                    border: 1px solid blue;
+                                    ~ label {
+                                        top: 15px;
+                                        background-color: white;
+                                        padding: 5px;
+                                        font-size: 11px;
+                                    }
+                                }
+                            }
+                            label {
+                                position: absolute;
+                                left: 20px;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                transition: top 0.2s linear;
+                                font-weight: 900;
+                                color: rgb(131, 129, 129);
+                                user-select: none;
+                            }
+                        }
+                        .forgot-pass {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 30px;
+                            margin-top: 10px;
+                            .remember {
+                                display: none;
+                            }
+                            label {
+                                font-weight: 900;
+                                display: flex; 
+                                align-items: center;
+
+                                .checkbox:first-child {
+                                    font-size: 25px;
+                                    color: #23d2e2;
+                                }
+                                .checkbox:last-child {
+                                    color: white;
+                                    position: relative;
+                                    left: -17px;
+                                }
+                            }
+                            a {
+                                text-decoration: none;
+                                font-weight: 900;
+                                color: rgb(183, 179, 179);
+                            }
+                            ~ button {
+                                padding: 20px 120px;
+                                background-color: #5753e4;
+                                color: #fff;
+                                border: none;
+                                border-radius: 10px;
+                                box-shadow: 4px 7px 12px 0 rgba(97,93,250,.2);
+                                margin-bottom: 30px;
+                            }
+                            ~ p {
+                                font-weight: 900;
+                            }
+                        }
+                    }
+
+// End Login
+
+                    .box-register {
+                        position: absolute;
+                        height: 750px;
+                        background-color: white;
+                        display: flex;
+                        flex-direction: column;
+                        text-align: center;
+                        padding: 0 60px;
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                        border-radius: 20px;
+                        display: none;
+                        opacity: 0;
+                        transition: opacity 0.3s linear;
+                    }
+                    h2 {
+                        font-size: 30px;
+                        font-weight: 900;
+                        margin: 50px 0;
+                    }
+                    .box-register-input {
+                        position: relative;
+                        padding: 15px 0;
+                        input {
+                            width: 100%;
+                            height: 60px;
+                            padding-left: 20px;
+                            border-radius: 10px;
+                            outline: red;
+                            font-size: 25px;
+                            border: 1px solid rgba(183, 179, 179, 0.557);
+                            transition: border-color .2s ease-in-out;
+                            &:focus,
+                            &:not(:placeholder-shown) {
+                                border: 1px solid blue;
+                                ~ label {
+                                    top: 15px;
+                                    background-color: white;
+                                    padding: 5px;
+                                    font-size: 11px;
+                                }
+                            }
+                        }
+                        label {
+                            position: absolute;
+                            left: 20px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            transition: top 0.2s linear;
+                            font-weight: 900;
+                            color: rgb(131, 129, 129);
+                        }
+                    }
+                    .send-pass {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 30px;
+                        margin-top: 10px;
+                        .send_update {
+                            display: none;
+                        }
+                        label {
+                            font-weight: 900;
+                            display: flex;
+                            align-items: center;
+                            .checkbox:first-child {
+                                font-size: 25px;
+                                color: #23d2e2;
+                            }
+                            .checkbox:last-child {
+                                color: white;
+                                position: relative;
+                                left: -17px;
+                            }
+                        }
+                        ~ button {
+                            padding: 20px 120px;
+                            background-color: #23d2e2;
+                            color: #fff;
+                            border: none;
+                            border-radius: 10px;
+                            box-shadow: 4px 7px 12px 0 rgba(35,210,226,.2);
+                            margin-bottom: 30px;
+                        }
+                        ~ p {
+                            font-weight: 900;
+                        }
+                    }
+                }
+            }
+        }   
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .background__right {
+        display: none;
+    }
+    .landing {
+        .row {
+            .box {
+                .box-content {
+                    left: 5%;
+                }
+                .box-login-register {
+                    right: 5%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1365px) {
+    .landing {
+        height: 1500px;
+        .row {
+            .box {
+                .rocket {
+                    display: none;
+                }
+                .box-content {
+                    top: 300px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 2;
+                }
+                .box-login-register {
+                    left: 50%;
+                    transform: translateX(-50%);
+                    .box-login {
+                        top: 550px;
+                    }
+                    .box-register {
+                        top: 650px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .landing {
+        .container {
+            .row {
+                .box {
+                    .box-content {
+                        h1 span {
+                            font-size: 80px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
