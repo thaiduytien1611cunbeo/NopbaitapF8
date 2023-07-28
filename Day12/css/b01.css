@@ -739,10 +739,10 @@
     transform: translateX(-50%);
   }
   .landing .row .box .box-login-register .box-login {
-    top: 550px;
+    top: 650px;
   }
   .landing .row .box .box-login-register .box-register {
-    top: 650px;
+    top: 630px;
   }
 }
 @media screen and (max-width: 500px) {
