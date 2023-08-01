@@ -1,0 +1,129 @@
+.header {
+    box-shadow: 0px 1.6666666269302368px 8.333333015441895px 0px rgba(0, 0, 0, 0.15);
+    padding: 15px 0;
+    .logo {
+        height: 99px;
+        img {
+            max-height: 100%;
+            width: auto;
+        }
+    }
+    .header-nav {
+        display: flex;
+        justify-content: flex-end;
+        height: 100%;
+        align-items: center;
+        .menu {
+            ul {
+                display: flex;
+                li {
+                    padding: 0 25px;
+                    a {
+                        font-weight: 600;
+                        padding-bottom: 54px;
+                    }
+                    &.active {
+                        a {
+                            border-bottom: 1.667px solid $primaryColor;
+                            color: $primaryColor;
+                        }
+                    }
+                    &:hover {
+                        @extend .active
+                    }
+                }
+            }
+        }
+        .cart-icon {
+            padding: 0 25px;
+            a {
+                position: relative;
+                display: inline-block;
+                span {
+                    position: absolute;
+                    top: -5px;
+                    right: -6px;
+                    background: $secondaryColor;
+                    color: white;
+                    padding: 0 4px;
+                    font-size: 1.3rem;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .search-icon {
+            padding-left: 25px;
+        }
+    }
+    .menu-toggle {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 991.98px) {
+    .header {
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            label {
+                font-size: 2.5rem;
+            }
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-nav {
+            .menu-overlay {
+                position: fixed;
+                inset: 0;
+                background: #00000029;
+                z-index: 1;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.4s ease;
+                transition: visibility 0.4s ease;
+            }
+            input[type="checkbox"] {
+                &:checked {
+                    ~ .menu-overlay {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                    ~ .menu {
+                        transform: translateX(0);
+                    }
+                } 
+            }
+            .menu {
+                position: fixed;
+                z-index: 2;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                background: $primaryColor;
+                padding: 20px 0;
+                min-width: 250px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                ul {
+                    display: block;
+                    li {
+                        a {
+                            color: white !important;
+                            border: 0 !important;
+                            display: block;
+                            padding: 10px 0;
+                        }
+                    }
+                }
+            }
+            .search-icon {
+                padding-left: 0;
+            }
+        }
+    }    
+}
