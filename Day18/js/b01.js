@@ -1,181 +1,33 @@
-// Bai 01 ==================================================================
-// N Số FIBONACI ===========================================================
+var content = `Lorem ipsum dolor sit Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, aliquid voluptatem corrupti quidem consequatur accusamus in qui quis, aperiam libero rem. Necessitatibus repudiandae excepturi nobis nihil quidem officiis, obcaecati sit?`;
 
-// function checkFibo(n) {
-//     if(n === 1 || n === 2) {
-//         return 1;
-//     }
-//     return checkFibo(n - 1) + checkFibo(n - 2);
-// }
+var newContent = `${content} `; // Em tạo 1 content mới để cắt từng từ của content
 
-// var count = 1; 
+var position = 0; // vị trí mình sẽ cắt từ bôi đỏ tiếp theo
+var result; // cập nhập đáp án hiện tại
+var index = 0; // cập nhập vị trí của positon trong String content
 
-//  function listFibo(n) {
+function myStep() {
+    position = newContent.indexOf(" "); 
 
-//     if(count > n) { 
-//         return false;
-//     } else {
-//         console.log(checkFibo(count));  
-//         count++;
-//         return listFibo(n);  
-//     }
+    result = content.slice(0, index) + ` <span style="color: #f1d667a2; background-color: #16A085;  border-radius: 3px;">${newContent.slice(0, position)}</span> ` + newContent.slice(position + 1, newContent.length);
+    console.log(result);
+    newContent = newContent.slice(position + 1); 
+
+    index += position + 1;
     
-//  }
+    // Cập nhật lặp lại để chữ nhảy từ cuối lên đầu
+    if (position === -1) {
+        position = 0;
+        newContent = `${content} `; 
+        index = 0;
+    }
+    document.getElementById("demo").innerHTML = result;
+}
 
-//  listFibo(10);
+// window.onload = myTimer;
 
-// Bai 02 ========================================================================
-// Đảo ngược số ==================================================================
+var myInterval = setInterval(myStep, 500);
 
-//  function reverse(n) {
-//     var ans = 0;
-//     while(n > 0) {
-//         var temp = n % 10;
-//         temp = Math.trunc(temp);
-//         ans = (ans * 10) + temp;
-//         n /= 10;
-//         n = Math.trunc(n);
-//     }
-//     console.log(ans);
-//  }   
-
-// reverse(2345)
-
-// Bai 03 ========================================================================================
-// Viết hàm chuyển số thành chữ ==================================================================
-
-// function lowerString(n) {
-//     switch(n) {
-//         case 0:
-//             return 'không'; 
-//         case 1:
-//             return 'một';
-//         case 2:
-//             return 'hai';
-//         case 3:
-//             return 'ba';
-//         case 4:
-//             return 'bốn';
-//         case 5:
-//             return 'năm'; 
-//         case 6:
-//             return 'sáu';
-//         case 7:
-//             return 'bảy';
-//         case 8:
-//             return 'tám';
-//         case 9:
-//             return 'chín';
-//         default:
-//             console.log(false);
-//     }
-// }
-
-// function upperString(n) {
-//     switch(n) {
-//         case 0:
-//             return 'Không'; 
-//         case 1:
-//             return 'Một';
-//         case 2:
-//             return 'Hai';
-//         case 3:
-//             return 'Ba';
-//         case 4:
-//             return 'Bốn';
-//         case 5:
-//             return 'Năm'; 
-//         case 6:
-//             return 'Sáu';
-//         case 7:
-//             return 'Bảy';
-//         case 8:
-//             return 'Tám';
-//         case 9:
-//             return 'Chín';
-//         default:
-//             console.log(false);
-//     }
-// }
-
-//  function toString(n) {
-//     var ans = "", a, b, c, d;
-//     if (n >= 0 && n <= 9999) {
-//         // tách các số hàng nghìn, hàng trăm, hàng chục gán bằng a, b, c, d;
-//         a = n / 1000; 
-//         a = Math.trunc(a); 
-//         n -= 1000 * a;
-//         b = n / 100; 
-//         b = Math.trunc(b);
-//         n -= 100 * b;
-//         c = n / 10; 
-//         c= Math.trunc(c);
-//         n -= 10 * c;
-//         d = n ; 
-//         d = Math.trunc(d);
-
-//         if (a === 0 && b === 0 && c === 0) {
-//             ans = lowerString(d);
-//         }
-//         else {
-//             // check trường hợp của a và b
-//         a = a === 0 ? "" : `${upperString(a)} nghìn `;
-//         b = b === 0 ? "" : `${lowerString(b)} trăm `;
-        
-//         // check trường hợp đặc biệt
-//         if (b === "" && d !== 0) {
-//             b = `không trăm `;
-//         }
-
-//         // check trường hợp của c và d
-//         if (d === 0) {
-//             d = "";
-//             if (c === 0) {
-//                 c = "";
-//             } else if (c === 1) {
-//                 c = "mười";
-//             } else {
-//                 c = `${lowerString(c)} mươi`
-//             }
-//         } else if (d === 1) {
-//             d = "";
-//             if (c === 0) {
-//                 c = "lẻ một";
-//             } else if (c === 1) {
-//                 c = "mười một";
-//             } else {
-//                 c = `${lowerString(c)} mươi mốt`
-//             }
-//         } else if (d === 5) {
-//             d = `lăm`;
-//             if (c === 0) {
-//                 c = "lẻ ";
-//             } else if (c === 1) {
-//                 c = "mười ";
-//             } else {
-//                 c = `${lowerString(c)} mươi `
-//             }
-//         } else {
-//             d = `${lowerString(d)}`;
-//             if (c === 0) {
-//                 c = "lẻ ";
-//             } else if (c === 1) {
-//                 c = "mười ";
-//             } else {
-//                 c = `${lowerString(c)} mươi `
-//             }
-//         } 
-//         ans = `${a}${b}${c}${d}`
-//     }
-
-//         console.log(ans);
-//     }
-//     else {
-//         console.log('Nhập số khác hộ em');
-//     }
-//  }
-
-//  // NHẬP TEST CASE VÀO ĐÂY NHÉ ANH
- 
-//   toString(111)
-   
+function myStop() {
+    clearInterval(myInterval);
+  }
