@@ -46,20 +46,22 @@
 // # Bài 03
 // Cho trước 1 mảng bất kỳ, nếu trong mảng có các phần tử trùng nhau thì chỉ giữ lại 1 (Gọi là lọc trùng). In ra mảng sau khi đã xử lý ===========================================================================
 
-var numbers = [9, 2, 5, 2, 3, 6, 6, 8, 13, 13];
 
 
-for (var i = 0; i < numbers.length - 1; i++) {
-    for (var j = i + 1; j < numbers.length; j++) {
-        if (numbers[j] === numbers[i]) {
-            var lastArr = numbers.slice(j + 1);
-            numbers = numbers.slice(0, j);
-            numbers = numbers.concat(lastArr);
-        }
-    }
-}
+// var numbers = [9, 2, 5, 2, 3, 6, 6, 8, 13, 13];
 
-console.log(numbers);
+
+// for (var i = 0; i < numbers.length - 1; i++) {
+//     for (var j = i + 1; j < numbers.length; j++) {
+//         if (numbers[j] === numbers[i]) {
+//             var lastArr = numbers.slice(j + 1);
+//             numbers = numbers.slice(0, j);
+//             numbers = numbers.concat(lastArr);
+//         }
+//     }
+// }
+
+// console.log(numbers);
 
 
 
