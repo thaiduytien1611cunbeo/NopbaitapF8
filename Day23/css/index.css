@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.25;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+.link-login {
+  margin: 100px 100px;
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-weight: 700;
+}
+.link-login:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+.link-login:hover:after {
+  transform: translate(0, 0);
+}
+.link-login:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+.link-login:hover {
+  outline: 0;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(35, 34, 34, 0.2274509804);
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s linear;
+}
+
+.opacity {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.outline {
+  outline: 1px solid red !important;
+}
+
+.background {
+  background-color: #E8F0FE;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.login {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 460px;
+  height: 480px;
+  background-color: #fff;
+  z-index: 2;
+}
+.login .title-login {
+  display: flex;
+}
+.login .title-login h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  width: 230px;
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.login .title-login h2:last-child {
+  color: rgb(159, 156, 156);
+  background-color: rgba(220, 220, 220, 0.516);
+}
+.login .content-login {
+  padding: 0 40px;
+}
+.login .content-login p.text-login {
+  text-align: center;
+  padding: 15px 0;
+}
+.login .content-login .icon-login {
+  display: flex;
+  justify-content: space-between;
+}
+.login .content-login .icon-login a {
+  background-color: #E2E8F0;
+  display: flex;
+  align-items: center;
+  color: black;
+  width: 180px;
+  padding: 8px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+.login .content-login .icon-login a img {
+  max-width: 30px;
+}
+.login .content-login .disconnexion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+.login .content-login .disconnexion span {
+  width: 160px;
+  border: 1px solid rgba(189, 188, 188, 0.269);
+}
+.login .content-login .disconnexion span:nth-child(2) {
+  border: none;
+  width: fit-content;
+}
+.login .content-login .input-login {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.login .content-login .input-login h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding-top: 15px;
+}
+.login .content-login .input-login input {
+  outline: 1px solid gray;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 3px;
+}
+.login .content-login .input-login div.password-input {
+  position: relative;
+}
+.login .content-login .input-login div.password-input .icon-pass {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+.login .content-login .input-login p {
+  color: red;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+.login .content-login .foget-pass {
+  display: block;
+  padding: 20px 0;
+  text-align: end;
+  color: gray;
+  font-style: italic;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.login .content-login .btn-login {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #1A7900;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.register {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 460px;
+  height: 520px;
+  background-color: #fff;
+  z-index: 2;
+}
+.register .title-register {
+  display: flex;
+}
+.register .title-register h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  width: 230px;
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.register .title-register h2:first-child {
+  color: rgb(159, 156, 156);
+  background-color: rgba(220, 220, 220, 0.516);
+}
+.register .content-register {
+  padding: 0 40px;
+}
+.register .content-register p.text-register {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.4rem;
+}
+.register .content-register .input-register {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.register .content-register .input-register h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding-top: 15px;
+}
+.register .content-register .input-register input {
+  outline: 1px solid gray;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 3px;
+}
+.register .content-register .input-register p {
+  color: red;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+.register .content-register .note-register {
+  padding: 15px 0;
+  color: grey;
+  font-size: 14px;
+}
+.register .content-register .note-register a {
+  color: #2e65ef;
+  font-weight: 700;
+}
+.register .content-register .btn-register {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #1A7900;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=index.css.map */
