@@ -62,7 +62,7 @@ inputLogin.forEach(function (it) {
 // Check email-login
 inputEmail.addEventListener('input', function (e) {
     var value = e.target.value;
-    if(value !== '' && login.querySelector('input[type=password]').value == '') {
+    if(value !== '' && login.querySelector('input[type=password]').value === '') {
         this.classList.add('outline');
         document.querySelector('.input-login .text-error-email').innerText = 'Vui lòng nhập đúng định dạng email';
         login.querySelector('.text-error-password').innerText = 'Vui lòng nhập thông tin';
@@ -179,7 +179,7 @@ document.querySelector('.login .title-login h2:last-child').addEventListener('cl
 
     // Check PassWord Register
 
-    var iconPass = document.querySelectorAll(".icon-pass");
+    // var iconPass = document.querySelectorAll(".icon-pass");
     var inputPass = document.querySelector('.input-register input[type=password]');
 
     inputPass.addEventListener('input', function (e) {
@@ -195,6 +195,23 @@ document.querySelector('.login .title-login h2:last-child').addEventListener('cl
             document.querySelector('.register').style.height = '540px';
         } 
     })// End Check PassWord Register
+
+    // Check Button
+
+    // Đăng Ký
+    var register = document.querySelector('.input-register')
+    document.querySelector('.btn-register').addEventListener('click', function (e) {
+        if(register.querySelector('input[type=email]').value === '' && register.querySelector('input[type=password]').value === ''&& register.querySelector('input[type=text]').value === '') {
+            register.querySelector('input[type=text]').classList.add('outline');
+            document.querySelector('.input-register .text-error-name').innerText = 'Vui lòng nhập thông tin';
+            register.querySelector('input[type=email]').classList.add('outline');
+            document.querySelector('.input-register .text-error-email').innerText = 'Vui lòng nhập thông tin';
+            register.querySelector('.text-error-password').innerText = 'Vui lòng nhập thông tin';
+            register.querySelector('input[type=password]').classList.add('outline');
+            document.querySelector('.register').style.height = '550px';
+        }
+    })
+
 })
 // End Check Register
 
@@ -230,3 +247,18 @@ document.querySelector('.forget-pass').addEventListener('click', function (e) {
         document.querySelector('.forget-pass-content').classList.add('none');
     })
 })
+
+
+// Check Button
+
+// Đăng Nhập
+document.querySelector('.btn-login').addEventListener('click', function (e) {
+    if(login.querySelector('input[type=email]').value === '' && login.querySelector('input[type=password]').value === '') {
+        login.querySelector('input[type=email]').classList.add('outline');
+        document.querySelector('.input-login .text-error-email').innerText = 'Vui lòng nhập thông tin';
+        login.querySelector('.text-error-password').innerText = 'Vui lòng nhập thông tin';
+        login.querySelector('input[type=password]').classList.add('outline');
+        document.querySelector('.login').style.height = '520px';
+    }
+})
+
