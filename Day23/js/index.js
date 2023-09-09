@@ -9,16 +9,16 @@ var registerClass = document.querySelector('.register').classList;
 registerClass.add('none'); // Thêm class none vào register
 
 var linkLogin = document.querySelector('.link-login');
-linkLogin.onclick = function() {
+linkLogin.addEventListener('click', function() {
     overlayClass.remove('opacity');
     loginClass.remove('none');
-} // khi click vào link thì xóa class none và opacity để login hiện ra
+}) // khi click vào link thì xóa class none và opacity để login hiện ra
 
-overlay.onclick = function() {
+overlay.addEventListener('click', function() {
     overlayClass.add('opacity');
     loginClass.add('none');
     registerClass.add('none');
-} // khi click vào ovarlay thì thêm class none và opacity để login mất đi
+}) // khi click vào ovarlay thì thêm class none và opacity để login mất đi
 
 var btnRegister = document.querySelector('.login .title-login h2:last-child');
 btnRegister.onclick = function() {
@@ -195,7 +195,6 @@ document.querySelector('.login .title-login h2:last-child').addEventListener('cl
             document.querySelector('.register').style.height = '540px';
         } 
     })// End Check PassWord Register
-
 })
 // End Check Register
 
@@ -216,3 +215,18 @@ inputList.forEach(function (item, index) {
         })
     })
 }) 
+
+
+
+// Check phần quên mật khẩu
+
+document.querySelector('.forget-pass').addEventListener('click', function (e) {
+    document.querySelector('.forget-pass-content').classList.toggle('none');
+    document.querySelector('.login').classList.add('none');
+    linkLogin.addEventListener('click',  function() {
+        document.querySelector('.forget-pass-content').classList.add('none');
+    })
+    overlay.addEventListener('click', function() {
+        document.querySelector('.forget-pass-content').classList.add('none');
+    })
+})

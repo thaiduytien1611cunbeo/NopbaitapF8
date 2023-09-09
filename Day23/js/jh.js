@@ -28,20 +28,7 @@ inputEmail.addEventListener('blur', function (e) {
     document.querySelector('.login').style.height = '520px';
 })
 
-inputEmail.addEventListener('input', function (e) {
-    var value = e.target.value;
-    if(login.querySelector('input[type=password]').value !== '') {
-        login.querySelector('.text-error-password').innerText = '';
-    }
-    if(value.includes('@') && value.indexOf('@') > 2) {
-        this.classList.remove('outline');
-        this.classList.add('background');
-        login.querySelectorAll('.text-error-email').forEach(function (item) {
-            item.innerText = '';
-        })
-        
-    }
-})
+
 
 // // End Check Email
 

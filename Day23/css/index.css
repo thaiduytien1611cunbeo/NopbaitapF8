@@ -104,11 +104,11 @@ ul, ol {
 }
 
 .none {
-  display: none;
+  display: none !important;
 }
 
 .block {
-  display: block;
+  display: block !important;
 }
 
 .login {
@@ -120,6 +120,7 @@ ul, ol {
   height: 480px;
   background-color: #fff;
   z-index: 2;
+  border-radius: 3px;
 }
 .login .title-login {
   display: flex;
@@ -205,7 +206,7 @@ ul, ol {
   font-size: 1.4rem;
   font-style: italic;
 }
-.login .content-login .foget-pass {
+.login .content-login .forget-pass {
   display: block;
   padding: 20px 0;
   text-align: end;
@@ -234,6 +235,7 @@ ul, ol {
   height: 520px;
   background-color: #fff;
   z-index: 2;
+  border-radius: 3px;
 }
 .register .title-register {
   display: flex;
@@ -296,6 +298,72 @@ ul, ol {
   border-radius: 5px;
   font-size: 1.8rem;
   font-weight: 700;
+  cursor: pointer;
+}
+
+.forget-pass-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 460px;
+  height: 350px;
+  background-color: #fff;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+}
+.forget-pass-content .title-forget {
+  margin-top: 20px;
+  font-size: 2.2rem;
+  font-weight: 500;
+  width: 230px;
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.forget-pass-content .content-forget {
+  padding: 0 40px;
+}
+.forget-pass-content .content-forget .input-forget {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.forget-pass-content .content-forget .input-forget h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding-top: 15px;
+}
+.forget-pass-content .content-forget .input-forget input {
+  outline: 1px solid gray;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.forget-pass-content .content-forget .input-forget p {
+  color: red;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+.forget-pass-content .content-forget .btn-forget {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #1A7900;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.forget-pass-content .content-forget .text-forget {
+  padding: 20px 0;
+  color: gray;
+  font-style: italic;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
