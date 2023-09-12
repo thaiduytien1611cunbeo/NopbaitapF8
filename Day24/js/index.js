@@ -53,23 +53,16 @@ var changeTask = function () {
         item.addEventListener('click', function (e) {
             contentTaskList[index].outerHTML = `<div class="container-input"><input type="text" class="input" placeholder="Update Task"><span class="add">Add Task</span></div>`;
 
-            var value;
-            document.querySelector('.list-task .container-input .input').addEventListener('input', function (e) {
-                value = e.target.value;
-                value = String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-            });
-
             var listContainerInput = document.querySelectorAll('.list-task .container-input');
             var listBtn = document.querySelectorAll('.list-task .add');
             var listInput = document.querySelectorAll('.list-task .input');
             var eventChange = function (e) {
                 listContainerInput.forEach(function (item) {
-                    var content = `<div class="task task${count++}"><p class="task-text">${e.target.value}</p><div class="task-icon"><i class="fa-solid fa-pen-to-square square"></i><i class="fa-solid fa-trash trash"></i></div></div>`;
+                    var content = `<div class="task task${count++}"><p class="task-text">${String(e.target.value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')}</p><div class="task-icon"><i class="fa-solid fa-pen-to-square square"></i><i class="fa-solid fa-trash trash"></i></div></div>`;
                      item.outerHTML = content;
                     listTask.splice(listTask.indexOf(contentTaskList[index].outerHTML), 1, content);
                     changeTask();
                     removeTask(); 
-                    // addTask();
                 })
             }
 
