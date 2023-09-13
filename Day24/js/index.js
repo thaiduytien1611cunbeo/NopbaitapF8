@@ -7,12 +7,13 @@ var listTask = [], count = 0;
 
 // ADD TASK
 var addTask = function (value) {
-    value = String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    value = String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').trim();
     if(value !== '') {
         listTask.push(`<div class="task task${count++}"><p class="task-text">${value}</p><div class="task-icon"><i class="fa-solid fa-pen-to-square square"></i><i class="fa-solid fa-trash trash"></i></div></div>`);
         document.querySelector('.list-task').innerHTML = listTask.join('') 
         input.value = '';
     }
+    clickTask();
 }// END ADD TASK
 
 // REMOVE TASK
@@ -79,7 +80,17 @@ var changeTask = function () {
     })
 } // END CHANG TASK
 
+// ClICK TASK
 
+var clickTask = function () {
+    listTask.forEach(function (item) {
+        item.addEventListener('click', function (e) {
+            e.target.style.textDecoration = 'line-through;'
+        })
+    })
+}
+
+// END CLICK TASK
 
 
 addBtn.addEventListener('click', function (e) {
