@@ -109,6 +109,6 @@ carouselInner.addEventListener('mousedown', function (e) {
             position = itemWidth - totalWidth;
             carouselInner.style.translate = `${position}px`;
         }
-        carouselInner.removeEventListener('mousemove', handler)
+        carouselInner.removeEventListener('mousemove', handler);
     })
 })
