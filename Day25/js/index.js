@@ -39,9 +39,13 @@ carouselPrevBtn.addEventListener('click', function (e) {
 })
 
 // Add Checkbox
-for (let index = 0; index < carouselItem.length; index++) {
-    carouselCheck.innerHTML += '<span></span>';
+var creatorCheck = function () {
+    for (var index = 0; index < carouselItem.length; index++) {
+        carouselCheck.innerHTML += '<span></span>';
+    }
 }
+creatorCheck();
+
 
 // Check Slide
 var carouselCheckItem = carouselCheck.querySelectorAll('span');
@@ -79,15 +83,18 @@ carouselInner.addEventListener('mousedown', function (e) {
         carouselInner.style.transition = 'translate 0s linear'
         var newClientX = e.clientX;
         positionMin = Math.abs(clientX - newClientX);
-        if(newPosition - (clientX - newClientX) < 150 && newPosition - (clientX - newClientX) > itemWidth - totalWidth - 150) {
+        if(newPosition - (clientX - newClientX) < (itemWidth / 11) && newPosition - (clientX - newClientX) > itemWidth - totalWidth - (itemWidth / 11)) {
             position = newPosition - (clientX - newClientX);
             if(Math.abs(clientX - newClientX) > itemWidth / 10) {
                 if(clientX - newClientX > 0) {
                     position = newPosition - itemWidth;
+                    carouselInner.removeEventListener('mousemove', handler)
                 }
-                else position = newPosition + itemWidth;
+                else {
+                    position = newPosition + itemWidth;
+                    carouselInner.removeEventListener('mousemove', handler)
+                }
                 carouselInner.style.transition = 'translate 0.4s linear';
-                carouselInner.removeEventListener('mousemove', handler);
                 checkPosition(position);
             }
         }
@@ -111,4 +118,16 @@ carouselInner.addEventListener('mousedown', function (e) {
         }
         carouselInner.removeEventListener('mousemove', handler);
     })
+})
+
+
+// ADD IMG
+
+var addImg = document.querySelector('.carousel-addImg');
+
+addImg.addEventListener('keydown', function (e) {
+    if(e.key === 'Enter') {
+        carouselCheck.innerHTML += '<span></span>';
+        carouselInner.innerHTML += '<div class="item"><img src="https://fastly.picsum.photos/id/781/1600/500.jpg?hmac=m8p3_nqmOXfFTQnsrbiuKEyugqpnd8EIZwUerSS0i78" alt=""></div>'
+    }
 })
