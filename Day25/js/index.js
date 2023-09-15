@@ -15,7 +15,7 @@ var itemWidth = carouselInner.clientWidth; // Lấy width của 1 item
 // Tính tổng kích thước item
 var totalWidth = carouselItem.length * itemWidth;
 
-carouselInner.style.width = `${totalWidth}px`;
+carouselInner.style.width = `${totalWidth}px`;  
 
 // Next slide
 var position = 0;
@@ -80,6 +80,7 @@ carouselInner.addEventListener('mousedown', function (e) {
     var positionMin;
 
     var handler = function (e) {
+        carouselInner.style.cursor = 'all-scroll';
         carouselInner.style.transition = 'translate 0s linear'
         var newClientX = e.clientX;
         positionMin = Math.abs(clientX - newClientX);
@@ -103,6 +104,7 @@ carouselInner.addEventListener('mousedown', function (e) {
 
     carouselInner.addEventListener('mousemove', handler)
     carouselInner.addEventListener('mouseup', function () {
+        carouselInner.style.cursor = 'default';
         carouselInner.style.transition = 'translate 0.4s linear'
         if(positionMin < itemWidth / 10) {
             position = newPosition;
