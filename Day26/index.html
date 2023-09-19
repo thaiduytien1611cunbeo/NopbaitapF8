@@ -8,28 +8,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <div class="container">
 
-        <div class="player">
-            <div class="play-btn">
-                <i class="fa-solid fa-play"></i>
+    <div class="wrapper">
+        <div class="container">
+            <div class="boxed">
+                <h2 class="title-box">Now Playing</h2>
+                <img src="images/keoemvelamvo.jpg" alt="img" class="img-box">
             </div>
-            <div class="play-inner">
-                <span>00:00</span>
-                <div class="progress-bar">
-                    <span class="time-hover"></span>
-                    <div class="progress">
-                        <span></span>
+            <!-- End boxed -->
+
+            <div class="player">
+                <div class="play-btn">
+                    <div class="btn btn-repeat">
+                        <i class="fa-solid fa-rotate-right">
+                        </i>
+                    </div>
+                    <div class="btn btn-prev">
+                        <i class="fa-solid fa-backward-step">
+                        </i>
+                    </div>
+                    <div class="btn btn-toggle-play">
+                        <i class="fa-solid fa-play icon-play">
+                        </i>
+                    </div>
+                    <div class="btn btn-next">
+                        <i class="fa-solid fa-forward-step">
+                        </i>
+                    </div>
+                    <div class="btn btn-random">
+                        <i class="fa-solid fa-shuffle">
+                        </i>
                     </div>
                 </div>
-                <span>00:00</span>
-            </div>
-        </div> 
-        <!-- End player -->
+                <!-- End play-btn -->
 
+                <div class="play-inner">
+                    <span class="time">00:00</span>
+                    <div class="progress-bar">
+                        <span class="time-hover"></span>
+                        <div class="progress">
+                            <span class="circle"></span>
+                        </div>
+                    </div>
+                    <span class="time">00:00</span>
+                </div>
+            </div> 
+            <!-- End player -->
+        </div>
+        <!-- End container -->
     </div>
-    <button class="btn">Đổi bài</button>
-    <p>Tại sao khi em cho audio.currentTime = 0 thì nó mất luôn ạ</p>
+    <!-- End wrapper -->
+    
+
     <audio src="mp3/KeoEmVeLamVo.mp3" class="audio"></audio>
     <script src="js/script.js"></script>
 </body>

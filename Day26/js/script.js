@@ -25,7 +25,6 @@ progressSpan.addEventListener('mousedown', function (e) {
 })
 
 document.addEventListener('mouseup', function (e) {
-    console.log(1);
     document.removeEventListener('mousemove', handlerDrag);
     audio.addEventListener('timeupdate', updateTime);
     currentValue = value;
@@ -47,7 +46,7 @@ var handlerDrag = function (e) {
 var audio = document.querySelector('.audio');
 var currentTimeEl = progressBar.previousElementSibling;
 var durationEl = progressBar.nextElementSibling;
-var playBtn = document.querySelector('.player .play-btn');
+var playBtn = document.querySelector('.player .btn-toggle-play');
 var playIcon = `<i class="fa-solid fa-play"></i>`;
 var pauseIcon = `<i class="fa-solid fa-pause"></i>`;
 var timeHover = progressBar.querySelector('.time-hover');
@@ -135,28 +134,86 @@ audio.addEventListener('ended', function (e) {
 
 
 
+
+// xử lý phần box
+// Chữ chạy
+var titleBox = document.querySelector('.title-box');
+var lengthContent = titleBox.innerHTML.length;
+titleBox.innerHTML = titleBox.innerHTML.split('').map(function (word) {
+    return `<span>${word}</span>`;
+}).join('');
+var runString = function () {
+    var count = 0;
+    setInterval(function () {
+        var value = count % (lengthContent);
+        count++;
+        console.log(value);
+        titleBox.children[value].style.color = '#3BAFD9';
+        if(value === 0) {
+            titleBox.children[lengthContent - 1].style.color = 'black';
+        } else {
+            titleBox.children[value - 1].style.color = 'black';
+        }
+    }, 500)
+};
+runString();
+
+
+// img quay
+var count = 0;
+setInterval(function () {
+    count++;
+    var imgBox = document.querySelector('.img-box');
+    imgBox.style.transform = `rotate(${count}deg)`;
+}, 10);
+
+
 // Next bai
-var btn = document.querySelector('.btn');
+var btnNext = document.querySelector('.btn-next');
+var btnPrev = document.querySelector('.btn-prev');
 var listSrc = [
     'mp3/KeoEmVeLamVo.mp3',
     'mp3/moneytema.mp3',
     'mp3/nguoiDuocChon.mp3',
     'mp3/RollingDown.mp4'
 ];
+var listImg = [
+    'images/keoemvelamvo.jpg',
+    'images/moneyteam.jpg',
+    'images/nguoiduochon.jpg',
+    'images/rollingdown.jpg',
+]
 
 
-btn.addEventListener('click', function (e) {
+btnNext.addEventListener('click', function (e) {
     audio.addEventListener('loadeddata', function (e) {
         durationEl.innerText = getTime(this.duration);
     })
     var random = Math.floor(Math.random() * (listSrc.length));
+    document.querySelector('.img-box').setAttribute('src', `${listImg[random]}`);
     document.querySelector('.audio').setAttribute('src', `${listSrc[random]}`);
     audio.currentTime = 0.01;
     audio.play();
 })
-
-btn.addEventListener('mousemove', function (e) {
-    btn.style.userSelect = 'none';
-    e.stopPropagation();
+btnPrev.addEventListener('click', function (e) {
+    audio.addEventListener('loadeddata', function (e) {
+        durationEl.innerText = getTime(this.duration);
+    })
+    if(audio.currentTime < 0.3) audio.currentTime = 0.01; 
+    else {
+        var random = Math.floor(Math.random() * (listSrc.length));
+        document.querySelector('.img-box').setAttribute('src', `${listImg[random]}`);
+        document.querySelector('.audio').setAttribute('src', `${listSrc[random]}`);
+        audio.currentTime = 0.01;
+        audio.play();
+    }
 })
 
+btnNext.addEventListener('mousemove', function (e) {
+    btnNext.style.userSelect = 'none';
+    e.stopPropagation();
+})
+btnPrev.addEventListener('mousemove', function (e) {
+    btnPrev.style.userSelect = 'none';
+    e.stopPropagation();
+})
