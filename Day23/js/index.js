@@ -262,3 +262,9 @@ document.querySelector('.btn-login').addEventListener('click', function (e) {
     }
 })
 
+
+
+var loginForm = document.querySelector('.login');
+loginForm.addEventListener('submit', function () {
+    loginForm.reset();
+})

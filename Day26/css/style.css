@@ -1,0 +1,89 @@
+.player {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 10px;
+    width: 90%;
+    margin: 70px auto;
+}
+
+.play-btn {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.play-inner {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.play-inner .progress-bar {
+    position: relative;
+    height: 10px;
+    width: 100%;
+    background-color: gray;
+    cursor: pointer;
+}
+
+.play-inner .progress-bar .time-hover {
+    position: absolute;
+    bottom: 10px;
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    left: 0;
+    /* display: none; */
+    translate: -50%;
+}
+
+.play-inner .progress-bar .progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background-color: red;
+    display: flex;
+    align-items: center;
+}
+
+.play-inner .progress-bar .progress span {
+    position: absolute;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    translate: 50%;
+    border-radius: 50%;
+    background-color: blueviolet;
+}
+
+.play-inner span:first-child,
+.play-inner span:last-child {
+    user-select: none;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    cursor: pointer;
+    transition: background-image 0.3s linear;
+}
+
+.btn:hover {
+    border: 2px solid #4158D0;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+}
+
+p {
+    margin-top: 50px;
+}

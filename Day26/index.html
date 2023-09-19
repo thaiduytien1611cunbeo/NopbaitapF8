@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="player">
+            <div class="play-btn">
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="play-inner">
+                <span>00:00</span>
+                <div class="progress-bar">
+                    <span class="time-hover"></span>
+                    <div class="progress">
+                        <span></span>
+                    </div>
+                </div>
+                <span>00:00</span>
+            </div>
+        </div> 
+        <!-- End player -->
+
+    </div>
+    <button class="btn">Đổi bài</button>
+    <p>Tại sao khi em cho audio.currentTime = 0 thì nó mất luôn ạ</p>
+    <audio src="mp3/KeoEmVeLamVo.mp3" class="audio"></audio>
+    <script src="js/script.js"></script>
+</body>
+</html>
