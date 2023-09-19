@@ -1,4 +1,4 @@
-// creater Elemtn
+// creater Elemnt
 
 var progressBar = document.querySelector('.progress-bar')
 var progress = progressBar.querySelector('.progress');
@@ -149,10 +149,13 @@ var runString = function () {
         count++;
         console.log(value);
         titleBox.children[value].style.color = '#3BAFD9';
+        titleBox.children[value].style.fontSize = '30px';
         if(value === 0) {
             titleBox.children[lengthContent - 1].style.color = 'black';
+            titleBox.children[lengthContent - 1].style.fontSize = '20px';
         } else {
             titleBox.children[value - 1].style.color = 'black';
+            titleBox.children[value - 1].style.fontSize = '20px';
         }
     }, 500)
 };
@@ -183,7 +186,12 @@ var listImg = [
     'images/nguoiduochon.jpg',
     'images/rollingdown.jpg',
 ]
-
+var listName = [
+    'Kéo Em Về Làm Vợ',
+    'Da Money Team',
+    'Người Được Chọn',
+    'Rolling Down',
+]
 
 btnNext.addEventListener('click', function (e) {
     audio.addEventListener('loadeddata', function (e) {
@@ -192,6 +200,7 @@ btnNext.addEventListener('click', function (e) {
     var random = Math.floor(Math.random() * (listSrc.length));
     document.querySelector('.img-box').setAttribute('src', `${listImg[random]}`);
     document.querySelector('.audio').setAttribute('src', `${listSrc[random]}`);
+    document.querySelector('.title-box').innerText = `${listName[random]}`
     audio.currentTime = 0.01;
     audio.play();
 })
@@ -204,6 +213,7 @@ btnPrev.addEventListener('click', function (e) {
         var random = Math.floor(Math.random() * (listSrc.length));
         document.querySelector('.img-box').setAttribute('src', `${listImg[random]}`);
         document.querySelector('.audio').setAttribute('src', `${listSrc[random]}`);
+        document.querySelector('.title-box').innerText = `${listName[random]}`
         audio.currentTime = 0.01;
         audio.play();
     }
