@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop cart</title>
+    <style>
+        table, th, td {
+            border: 1.5px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>List of Product</h2>
+    <table style="width: 100%;" class="table">
+        <tr>
+            <th>STT</th>
+            <th>Product's name</th>
+            <th>Price</th>
+            <th>Add to Basket</th>
+        </tr>
+    </table>
+
+    <h2>CART</h2>
+
+    <p class="text">The shopping cart has no products</p>
+
+    <div class="root" style="display: none;">
+        <table style="width: 100%;" class="cart">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Product's name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Money</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+            <tfoot>
+                <tr class="footer">
+                    <td colspan="3">Total</td>
+                    <td></td>
+                    <td colspan="2"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <hr>
+        <button class="update">Update shopping cart</button>
+        <button class="delete-all">Delete shopping cart</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

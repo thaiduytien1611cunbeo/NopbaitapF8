@@ -38,6 +38,7 @@ var handlerDrag = function (e) {
     if (value > 100) value = 100;
     progress.style.width = `${value}%`;
     audio.removeEventListener('timeupdate', updateTime);
+    if(audio.currentTime === 0) audio.currentTime = 0.01;
 }
 
 
@@ -101,6 +102,7 @@ audio.addEventListener('timeupdate', updateTime)
 
 // Tua audio
 progressBar.addEventListener('mousedown', function(e) {
+    
     audio.currentTime = audio.duration * value / 100;
 })
 
@@ -131,7 +133,6 @@ timeHover.addEventListener('mousemove', function (e) {
 audio.addEventListener('ended', function (e) {
     audio.currentTime = 0.01;
 })
-
 
 
 
