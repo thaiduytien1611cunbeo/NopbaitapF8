@@ -81,8 +81,16 @@ var handleTable = function (table, id, stt, name, price) {
             // Delete product in shopping cart
             button.addEventListener('click', function () {
                 if(confirm('Are you sure?')) {
+                    quantity -= +(tr.querySelector('.input-tb input').value);
+                    totalMoney -= price * (tr.querySelector('.input-tb input').value);
+                    footer.children[1].innerText = quantity;
+                    footer.children[2].innerText = totalMoney;
                     tbody.removeChild(tr);
                     listIdCart.splice(listIdCart.indexOf(id), 1);
+                    if(quantity === 0) {
+                        root.style.display = 'none';
+                        document.querySelector('.text').style.display = '';
+                    }
                 }
             })
             // End Delete product in shopping cart
@@ -149,7 +157,6 @@ root.querySelector('.update').addEventListener('click', function () {
                 price = item.price;
             }
         })
-        console.log(price);
         quantity += temp;
         tbody.children[i].querySelector('.input-tb').nextElementSibling.innerText = temp * price;
         totalMoney += +(tbody.children[i].querySelector('.input-tb').nextElementSibling.innerText);
@@ -158,6 +165,5 @@ root.querySelector('.update').addEventListener('click', function () {
 
     footer.children[2].innerText = totalMoney;
 })
-
 
 
