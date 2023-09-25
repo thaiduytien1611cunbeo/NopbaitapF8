@@ -1,0 +1,161 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100px;
+  background-color: #130C1C;
+}
+.container .list-btn {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 50%;
+  translate: -50%;
+  column-gap: 20px;
+}
+.container .list-btn .play-btn,
+.container .list-btn .micro-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+  border: 1.5px solid white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.container .player {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  min-width: 500px;
+  max-width: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  left: 50%;
+  translate: -50%;
+}
+.container .player .progress-bar {
+  width: 100%;
+  background-color: gray;
+  height: 3px;
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+.container .player .progress-bar:hover {
+  height: 5px;
+  border-radius: 5px;
+}
+.container .player .progress-bar:hover .progress span {
+  display: block;
+}
+.container .player .progress-bar .progress {
+  position: absolute;
+  background: white;
+  top: 0;
+  bottom: 0;
+  border-radius: 2px;
+}
+.container .player .progress-bar .progress span {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  bottom: 0;
+  width: 15px;
+  height: 15px;
+  display: none;
+  border-radius: 50%;
+  background: white;
+  translate: 50% -50%;
+}
+.container .player .progress-bar .time-preview {
+  position: absolute;
+  top: 0;
+  translate: -50% -110%;
+  background: black;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 2px 5px;
+  display: none;
+}
+.container .player .progress-bar .time-preview.show {
+  display: block;
+}
+.container span {
+  font-family: sans-serif;
+}
+.container .wrapper-kara {
+  position: absolute;
+  top: 100%;
+  width: 100vw;
+  height: calc(100vh - 100px);
+  background-color: #362349;
+  z-index: -1;
+  transition: top 0.3s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.container .wrapper-kara.slip {
+  top: calc(-100vh + 100px);
+}
+.container .wrapper-kara .btn-slip {
+  position: absolute;
+  z-index: 0;
+  top: 50px;
+  right: 50px;
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: white;
+  border: 1.5px solid white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+}
+.container .wrapper-kara .kara-lyric,
+.container .wrapper-kara .kara-title {
+  background-color: #362349;
+  height: 50vh;
+  position: relative;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-align: center;
+  line-height: 1.8em;
+  transition: bottom 0.3s linear;
+}
+
+.appear {
+  display: flex !important;
+}
+
+.none {
+  display: none !important;
+}
+
+.opacity {
+  opacity: 0 !important;
+}
+
+/*# sourceMappingURL=style.css.map */
