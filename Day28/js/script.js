@@ -229,6 +229,9 @@ var karaoke = function () {
                 if(time > listTimeStart[i]) {
                     indexSentence = i;
                     check = 1;
+                    if(indexSentence > 2) {
+                        karaLyric.children[indexSentence - 2].style.color = 'white';
+                    }
                 } else {
                     break;
                 }
