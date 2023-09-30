@@ -116,7 +116,7 @@ var handleCount = function (wrapper) {
             var text = document.createTextNode(`Module: ${countModule}: `);
             countModule++;
         } else {
-            var text = document.createTextNode(`Lesson: ${countLesson}: `);
+            var text = document.createTextNode(`Bài: ${countLesson}: `);
             countLesson++;
         }
         
