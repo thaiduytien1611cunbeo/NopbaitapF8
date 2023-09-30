@@ -103,7 +103,7 @@
   top: 100%;
   width: 100vw;
   height: calc(100vh - 100px);
-  background-color: #362349;
+  background-color: pink;
   z-index: -1;
   transition: top 0.3s linear;
   display: flex;
@@ -134,7 +134,7 @@
 }
 .container .wrapper-kara .kara-lyric,
 .container .wrapper-kara .kara-title {
-  background-color: #362349;
+  background-color: pink;
   height: 50vh;
   position: relative;
   color: white;

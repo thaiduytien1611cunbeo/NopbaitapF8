@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 500px;
+    margin: 20px auto;
+    border: 15px solid #4286F4;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    position: relative;
+    background-color: #4286F4;
+    border-radius: 10px;
+
+}
+
+
+.wrapper .list-item,
+.list-hidden {
+    background-color: #8BB3F4;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 18px;
+    font-family: sans-serif;
+    line-height: 40px;
+    padding: 0 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.wrapper .list-item.active {
+    background-color: #FF6F00;
+}
+
+
+.wrapper .list-item.ghost {
+    opacity: 0.4;   
+    z-index: 2;
+}
+
+.list-hidden {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    right: 0;
+    z-index: 0;
+}
+
+

@@ -3,7 +3,7 @@ var lyric = `{
     "msg": "Success",
     "name": [
         "Người Về Thăm Quê",
-        "Thu Hiền"
+        "PHẠM TRANG"
     ],
     "data": {
         "sentences": [
