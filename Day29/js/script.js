@@ -42,6 +42,7 @@ database.modules.forEach(function (_module, index) {
     var text = document.createTextNode(`Module: ${index + 1}: `);
     div.classList.add('active');
     div.classList.add('list-item');
+    div.setAttribute('draggable', 'true');
     span.innerText = _module;
     div.append(text);
     div.append(span);
@@ -53,102 +54,76 @@ database.lessons.forEach(function (lesson, index) {
     var span = document.createElement('span');
     var text = document.createTextNode(`Bài: ${index + 1}: `);
     div.classList.add('list-item');
+    div.setAttribute('draggable', 'true');
     span.innerText = lesson;
     div.append(text);
     div.append(span);
     wrapper.append(div);
 });
 
-var listItem = wrapper.querySelectorAll('.list-item');
-var itemHeight = wrapper.querySelector('.list-item').clientHeight;
-var listHidden = wrapper.querySelector('.list-hidden');
+
+
+
+var wrapper = document.querySelector('.wrapper');
+var listItem = wrapper.children;
+listItem = Array.from(listItem);
+var listHidden, indexStart;
 var isDrag = false;
-var initialPositionX, initialPositionY;
-var itemClick, indexItemClick;
-var movePositionX, movePositionY;
-var updateIndex, updatePosition;
+
+
+// listItem.
 
 
 listItem.forEach(function (item, index) {
-    item.addEventListener('mousedown', function (e) {
-        if(e.which === 1) {
-            e.preventDefault();
-            isDrag = true;
-            initialPositionX = e.clientX;
-            initialPositionY = e.clientY;
-            itemClick = item;
-            indexItemClick = index
-
-            // if(item.classList.contains('active')) {
-            //     listHidden.style.backgroundColor = `#FF6F00 !important`;
-
-            // } else {
-            //     listHidden.style.backgroundColor = '#4286F4 !important';
-            // }
+    item.addEventListener('dragstart', function (e) {
+        listHidden = this;
+        listHidden.style.opacity = '0.4';
+        indexStart = index;
+    })
 
 
+    item.addEventListener('dragenter', function (e) {
+        console.log('enter');
+        isDrag = true;
+        if(indexStart <= index) {
+            wrapper.insertBefore(listHidden, this.nextElementSibling);
+        } else {
+            wrapper.insertBefore(listHidden, this);
         }
+
+        if(isDrag) {
+            item.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                isDrag = false;
+            })
+        }
+    })
+    
+    item.addEventListener('drop', function (e) {
+        listHidden.style.opacity = '';
+    })
+
+    item.addEventListener('dragend', function (e) {
+        item.style.opacity = '';
+        handleCount(wrapper)
     })
 })
 
 
-var handleListHidden = function (item, index) {
-    listHidden.innerHTML = item.innerHTML;
-    var positionTop = (itemHeight + 3) * index;
-    listHidden.style.top = `${positionTop}px`;
-    listHidden.style.left = `0px`;
+
+var handleCount = function (wrapper) {
+    
+    var countModule = 1;
+    var countLesson = 1;
+    
+    Array.from(wrapper.children).forEach(function (item) {
+        if(item.classList.contains('active')) {
+            var text = document.createTextNode(`Module: ${countModule}: `);
+            countModule++;
+        } else {
+            var text = document.createTextNode(`Bài: ${countLesson}: `);
+            countLesson++;
+        } 
+        item.replaceChild(text, item.childNodes[0]); 
+    });
 }
-
-document.addEventListener('mouseup', function (e) {
-    isDrag = false;
-    itemClick.classList.remove('ghost');
-    // listHidden.style.top = `-9999px`;
-    // listHidden.style.left = `-9999px`;
-    if(movePositionX > 100 || movePositionY < itemHeight) {
-        itemClick.style.top = `0px`;
-        itemClick.style.left = `0px`;
-    } else {
-        itemClick.style.top = `${updatePosition}px`;
-        itemClick.style.left = `0px`;
-    }
-
-    [listItem[updateIndex], listItem[indexItemClick]] = [listItem[indexItemClick], listItem[updateIndex]]
-
-})
-
-
-document.addEventListener('mousemove', function (e) {
-    e.preventDefault();
-    if(isDrag) {
-        itemClick.classList.add('ghost');
-        handleListHidden(itemClick, indexItemClick);
-
-        handlerMove(itemClick, indexItemClick, e);
-
-        updateMove();
-
-    }
-}) 
-
-
-var handlerMove = function (item, index, e) {
-    movePositionX = e.clientX - initialPositionX;
-    movePositionY = e.clientY - initialPositionY;
-
-    item.style.top = `${movePositionY}px`;
-    item.style.left = `${movePositionX}px`;
-}
-
-var updateMove = function () {
-    updateIndex = indexItemClick +  Math.floor(movePositionY / (itemHeight + 3));
-    updatePosition = updateIndex * ((itemHeight + 3));
-    listHidden.style.top = `${updatePosition}px`;
-
-    listItem.forEach(function (item, index) {
-        if(index === updateIndex && index !== indexItemClick) {
-            item.style.top = `${-(itemHeight + 3)}px`; 
-            item.style.left = `0px`;
-        }
-    })
-}
-

@@ -3,14 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Doc Editor</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin = "anonymous" referrerpolicy = "no-referrer"> </script>
 </head>
 <body>
-    <div class="dropzone">
-        <div id="draggable" draggable="true">This div is draggable</div>
-      </div>
-      <div class="dropzone" id="droptarget"></div>
+    
+    <div class="wrapper">
+        <h2 class="title">Doc Editor</h2>
+
+        <div class="box-editor">
+            <div class="controls">
+                <div class="main-controls">
+                    <button class="btn-file">
+                        <span>File</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                    <input type="text" class="name-file" value="untitled">
+                    <ul class="boxed-list-item none">
+                        <li class="item">New</li>
+                        <li class="item">Save as TXT</li>
+                        <li class="item">Save as PDF</li>
+                    </ul>
+                </div>
+                <!-- End main-controls -->
+
+                <div class="menu-controls-container" data-for="content">
+                    <button class="btn btn-b" data-el="b"><b>b</b></button>
+                    <button class="btn btn-u" data-el="u"><u>u</u></button>
+                    <button class="btn btn-i" data-el="i"><i>i</i></button>
+                    <input type="color" class="ip-color">
+                </div>
+                <!-- End menu-controls-container -->
+
+            </div>
+            <!-- End controls -->
+
+            <div class="content" contenteditable="true" id="element-to-print">
+
+            </div>
+            <!-- End content -->
+
+            <div class="var-count">
+                <span>Số ký tự:</span>
+                <span>Số từ:</span>
+            </div>
+        </div>
+        <!-- End box-editor -->
+    </div>
+    
       <script src="js/script.js"></script>
 </body>
 </html>
