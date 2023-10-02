@@ -18,7 +18,7 @@ listBtn.forEach(function (btn) {
 
 //edit Color
 var ipColor = document.querySelector('.ip-color');
-ipColor.addEventListener('change', function (e) {
+ipColor.addEventListener('input', function (e) {
     var color = e.target.value;
     console.log(color);
     document.execCommand('styleWithCSS', false, true);
@@ -60,12 +60,12 @@ content.addEventListener('input', function (e) {
 content.addEventListener('paste', function (e) {
     e.preventDefault();
 
-  let paste = (e.clipboardData || window.clipboardData).getData("text");
-  const selection = window.getSelection();
-  if (!selection.rangeCount) return;
-  selection.deleteFromDocument();
-  selection.getRangeAt(0).insertNode(document.createTextNode(paste));
-  selection.collapseToEnd();
+    let paste = (e.clipboardData || window.clipboardData).getData("text");
+    const selection = window.getSelection();
+    if (!selection.rangeCount) return;
+    selection.deleteFromDocument();
+    selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+    selection.collapseToEnd();
 })
 
 
@@ -95,11 +95,13 @@ nameFileInput.addEventListener('change', function (e) {
     nameFile = e.target.value;
 })
 
+// click newFile
 newFile.addEventListener('click', function () {
     content.textContent = '';
     handleBox();
 })
 
+// click save TXT
 saveTxt.addEventListener('click', function () {
     var blob = new Blob(["This is a sample file content."], {
         type: "text/plain;charset=utf-8",
@@ -108,6 +110,7 @@ saveTxt.addEventListener('click', function () {
     handleBox();
 })
 
+// click Save Pdf
 savePdf.addEventListener('click', function () {
     var element = document.getElementById('element-to-print');
     var opt = {
