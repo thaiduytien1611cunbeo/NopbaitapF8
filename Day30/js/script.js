@@ -55,6 +55,27 @@ content.addEventListener('input', function (e) {
     var count = document.createTextNode(countWords);
     words.append(count);
 })
+content.addEventListener('keydown', function (e) {
+    if(e.key === 'Control') {
+        var value = this.textContent;
+
+    // đếm số kí tự
+    countCharacters = value.length;
+    characters.removeChild(characters.childNodes[1]);
+    var count = document.createTextNode(countCharacters);
+    characters.append(count);
+
+    // đếm số từ
+    countWords = value.trim().replace(/\s+/g, ' ').split(' ').length;
+    if(value === '') {
+        countWords = 0;
+    }
+
+    words.removeChild(words.childNodes[1]);
+    var count = document.createTextNode(countWords);
+    words.append(count);
+    }
+})
 
 // reset style CSS WHen paste content 
 content.addEventListener('paste', function (e) {
