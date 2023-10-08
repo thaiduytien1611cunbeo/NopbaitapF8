@@ -35,3 +35,10 @@ function checkClick(btn) {
     };
 }
 
+document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") {
+      console.log("Tab không còn hiển thị");
+    } else {
+      console.log("Tab đang hiển thị");
+    }
+});
