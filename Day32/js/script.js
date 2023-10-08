@@ -1,5 +1,5 @@
 const counter = document.querySelector(".counter");
-counter.innerText = 2;
+counter.innerText = 10;
 const btn = document.querySelector(".btn");
 
 let startTime;
