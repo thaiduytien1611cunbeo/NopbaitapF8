@@ -50,6 +50,7 @@ const handlerTemplate = (templateNode, options) => {
                 node.addEventListener(`${nameEvent}`, function () {
                     eval(valueNode);
 
+                    // ở đây em đang lấy các node bằng cách thêm thẻ span và class vào đấy anh có thể cho em xin ý tưởng khác để có thể thay đổi được value của count và title mà không cần đặt biến cố định không ạ
                     if(nodeCounts) {
                         nodeCounts.forEach((node) => {
                             node.innerText = count;
