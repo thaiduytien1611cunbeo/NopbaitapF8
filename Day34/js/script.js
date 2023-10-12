@@ -32,15 +32,17 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
         if(isDrag === true) {
             message.innerText = 'Đã nói xong. Hy vọng kết quả như ý bạn';
             message.style.color = 'rgb(39, 39, 147)';
-            note.innerText = `hehe Nạp thêm 10k để sử dụng tiếp dịch vụ`;
             
             handlerCurrentValue(currentValue);
 
             if(isSuccess) {
                 result.innerHTML = `Đã thực hiện xong`;
+                note.innerText = `hehe Nạp thêm 10k để sử dụng tiếp dịch vụ`;
                 img.style.display = 'block';
             } else {
-                result.innerHTML = `Không thực hiện được yêu cầu`
+                setInterval(function () {
+                    result.innerHTML = `Không thực hiện được yêu cầu`
+                }, 1000)
             }
         }
         
