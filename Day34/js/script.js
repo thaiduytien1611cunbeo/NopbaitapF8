@@ -37,7 +37,7 @@ btnCancelEdit.addEventListener('click', function () {
 
 
 // handler data from API
-const serverApi = `https://nk7sd7-8080.csb.app`;
+const serverApi = `https://9rrgy6-8080.csb.app`;
 fetch(`${serverApi}/todo`).then((response) => {
     return response.json();
 }).then(todo => {
