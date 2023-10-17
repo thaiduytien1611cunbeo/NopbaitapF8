@@ -1,60 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #03BDF0;
+            color: white;
+        }
+        #root {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 20px;
+            width: fit-content;
+            margin: 100px auto;
+        }
+        #root h2 {
+            font-size: 30px;
+            font-weight: 900;
+        }
+        #root .btn {
+            display: block;
+            width: 100px;
+            height: 40px;
+            background-color: gray;
+            color: rgb(143, 143, 141);
+            border: 1px solid white;
+            border-radius: 99px;
+            color: white;
+            font-size: 18px;
+            cursor: no-drop;
+        }
+        .timer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 10px;
+        }
+        .btn.action {
+            background-color: transparent !important;
+            cursor: pointer !important;
+        }
+        .counter {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255, 162, 0);
+            border-radius: 50%;
+            border: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-  
-<div>
-  <!-- Tab items -->
-  <div class="tabs">
-    <div class="tab-item active">
-      <i class="tab-icon fas fa-code"></i>
-      React
-    </div>
-    <div class="tab-item">
-      <i class="tab-icon fas fa-cog"></i>
-      Angular
-    </div>
-    <div class="tab-item">
-      <i class="tab-icon fas fa-plus-circle"></i>
-      Ember
-    </div>
-    <div class="tab-item">
-      <i class="tab-icon fas fa-pen-nib"></i>
-      Vue.JS
-    </div>
-    <div class="line"></div>
-  </div>
+    
+   <div id="root">
+        <div class="timer">
+            <h2>Get Link</h2>
+            <span class="counter"></span>
+            <div class="action">
+                <button class="btn" disabled>Get Link</button>
+            </div>
+        </div>
+   </div>
 
-  <!-- Tab content -->
-  <div class="tab-content">
-    <div class="tab-pane active">
-      <h2>React</h2>
-      <p>React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.</p>
-    </div>
-    <div class="tab-pane">
-      <h2>Angular</h2>
-      <p>Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps.</p>
-    </div>
-    <div class="tab-pane">
-      <h2>Ember</h2>
-      <p>Ember.js is a productive, battle-tested JavaScript framework for building modern web applications. It includes everything you need to build rich UIs that work on any device.</p>
-    </div>
-    <div class="tab-pane">
-      <h2>Vue.js</h2>
-      <p>Vue (pronounced /vju/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. </p>
-    </div>
-  </div>
-</div>
-
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

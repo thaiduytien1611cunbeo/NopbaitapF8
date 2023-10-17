@@ -1,24 +1,44 @@
-var listTabItem = document.querySelectorAll('.tab-item');
-var listTabPane = document.querySelectorAll('.tab-pane');
-var line = document.querySelector('.line');
+const counter = document.querySelector(".counter");
+counter.innerText = 10;
+const btn = document.querySelector(".btn");
 
+let startTime;
+let cnt = 0;
 
-listTabItem.forEach(function (item, index) {
-    item.addEventListener('click', function (e) {
+const timer = function (currentTime) {
+    if (!startTime)  startTime = currentTime;
 
-        listTabItem.forEach(function (_item, _index) {
-            if(_item.classList.contains('active')) {
-                _item.classList.remove('active');
-                listTabPane[_index].classList.remove('active');
-            }
-        })
+    const elapsed = currentTime - startTime;
+        
 
-        this.classList.add('active');
-        listTabPane[index].classList.add('active');
+    if (elapsed >= 1000) {
+        counter.textContent--;
+        startTime = currentTime;
+    };
 
-        line.style.width =  this.clientWidth + 'px';
-        line.style.left = this.offsetLeft + 'px';
-    });
-})
+    if(+counter.textContent > 0) {
+        requestAnimationFrame(timer);
+        cnt++;
+    }
+    else checkClick(btn);
+};
 
-line.style.width =  listTabItem[0].clientWidth + 'px';
+requestAnimationFrame(timer);
+
+function checkClick(btn) {
+    if (+counter.textContent === 0) {
+        btn.removeAttribute('disabled'); 
+        btn.classList.add("action");
+        btn.addEventListener("click", function() {
+            window.location.href='https://fullstack.edu.vn'; 
+        });
+    };
+}
+
+document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") {
+      console.log("Tab không còn hiển thị");
+    } else {
+      console.log("Tab đang hiển thị");
+    }
+});

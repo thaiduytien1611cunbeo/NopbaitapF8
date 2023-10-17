@@ -3,73 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vue JS mini</title>
     <style>
         body {
-            background-color: #03BDF0;
+            padding: 50px;
+            background-color: #4158D0;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            height: 100vh;
+            font-family: sans-serif;
             color: white;
+            font-size: 25px;
         }
-        #root {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            row-gap: 20px;
-            width: fit-content;
-            margin: 100px auto;
-        }
-        #root h2 {
-            font-size: 30px;
-            font-weight: 900;
-        }
-        #root .btn {
-            display: block;
-            width: 100px;
-            height: 40px;
-            background-color: gray;
-            color: rgb(143, 143, 141);
-            border: 1px solid white;
-            border-radius: 99px;
+        button {
+            padding: 10px 20px;
+            background-color: #0093E9;
+            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+            border: none;
+            font-size: 25px;
             color: white;
-            font-size: 18px;
-            cursor: no-drop;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 15px;
         }
-        .timer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            row-gap: 10px;
-        }
-        .btn.action {
-            background-color: transparent !important;
-            cursor: pointer !important;
-        }
-        .counter {
-            width: 50px;
-            height: 50px;
-            background-color: rgb(255, 162, 0);
-            border-radius: 50%;
-            border: 1px solid white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 28px;
-            font-weight: 500;
-            margin-bottom: 10px;
+
+        button:hover {
+            background-color: #0094e980;
+            background-image: linear-gradient(160deg, #0094e99d 0%, #80d0c793 100%);
         }
     </style>
 </head>
 <body>
     
-   <div id="root">
-        <div class="timer">
-            <h2>Get Link</h2>
-            <span class="counter"></span>
-            <div class="action">
-                <button class="btn" disabled>Get Link</button>
-            </div>
-        </div>
-   </div>
+    <header-component></header-component>
 
+    <counter-app></counter-app>
+
+    <script src="js/component.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
