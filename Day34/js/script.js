@@ -97,6 +97,7 @@ const addElement = (value, completed, id) => {
     addEventBtn(div);
 
     if(completed) {
+        div.querySelector('.icon-completed').classList.add('active');
         listItemsSuccess.append(div);
         counterItemsSuccess.innerText++;
     } else {
@@ -204,6 +205,7 @@ const completedElement = function (e) {
         const id = +this.parentNode.parentNode.getAttribute('data-id');
 
         const node = this.parentNode.parentNode.cloneNode(true);
+        node.querySelector('.icon-completed').classList.add('active');
         addEventBtn(node);
         
         this.parentNode.parentNode.remove();
