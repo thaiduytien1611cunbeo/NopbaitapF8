@@ -18,6 +18,8 @@ export const client = {
         
         const response = await fetch(url, options);
 
+        document.querySelector('.loadingio-spinner-gear-hmyjdw1v7b6').classList.add('hidden');
+
         const data = await response.json();
 
         return { response, data };
