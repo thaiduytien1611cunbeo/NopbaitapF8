@@ -8,6 +8,7 @@ const boxStatus  = document.querySelector('.box-status');
 const boxEnd = document.querySelector('.box-end');
 const boxScore = boxEnd.querySelector('.score .number');
 const boxCorrect = boxEnd.querySelector('.correct .number');
+const animation = document.querySelector('.animation');
 const boxInCorrect = boxEnd.querySelector('.incorrect .number');
 const btnPlayAgain = boxEnd.querySelector('.play-btn');
 btnPlayAgain.addEventListener('click', () => {
@@ -24,15 +25,13 @@ btnStart.addEventListener('click', function (e) {
         timeStart--;
         timer.innerText = timeStart;
         if(timeStart === 0) {
+            //run APP
+            app.start();
+
             timer.innerText = "GO!";
             boxStart.classList.add('hidden');
             question.classList.remove('hidden');
-            setTimeout(function () {
-                document.querySelector('.wrapper-question').style.left = '0';
-            }, 100)
             
-            //run APP
-            app.start();
 
             clearInterval(myInterval);
         }
@@ -104,9 +103,13 @@ const app = {
     getQuestions : async function (id) {
         const { data:questions, response } = await client.get(`/questions/${id}`);
 
-        document.querySelector('.counter-ans span').innerText = `${id}`;
-        this.render(questions);
+        if(response.ok) {
+            animation.classList.add('hidden')
+            document.querySelector('.counter-ans span').innerText = `${id}`;
+            document.querySelector('.wrapper-question').style.left = '0';
+            this.render(questions);
 
+        }
     },
 
     run : function () {
@@ -114,19 +117,19 @@ const app = {
         const timeNext = 5000;
         this.getQuestions(count);
 
-        const myInterval = setInterval(myTimer, timeNext)  
-
-        const myTimer = () => {
+        const myInterval = setInterval(() => {
             count++;
             this.getQuestions(count);
-            if(count === 9) {
-                this.handleBoxEnd();
-                clearInterval(myInterval);
-            }
-        }
+        }, timeNext)  
+
+        setTimeout(() => {
+            this.handleBoxEnd();
+            clearInterval(myInterval);
+        },8*timeNext)
+
     },
 
-    handleBoxEnd: () => {
+    handleBoxEnd: function () {
         question.classList.add('hidden');
         boxEnd.classList.remove('hidden');
 
@@ -137,12 +140,13 @@ const app = {
 
         const value = Math.floor((this.counterCorrect)/(this.counterCorrect + this.inCounterCorrect) * 100);
         console.log(document.querySelector('.progress-bar'));
-        document.querySelector('.progress-bar').style.width = `75%`;
+        document.querySelector('.progress-bar').style.width = `${value}%`;
         document.querySelector('.progress-bar').innerText = `${value}%`;
     },
 
     start: function () {
         this.run();
+        animation.classList.remove('hidden')
     }
     
 }
