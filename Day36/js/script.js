@@ -4,7 +4,6 @@ import { config } from "./config.js";
 const boxStart = document.querySelector('.start');
 const btnStart = boxStart.querySelector('.btn-start');
 const question  = document.querySelector('.question');
-const boxStatus  = document.querySelector('.box-status');
 const boxEnd = document.querySelector('.box-end');
 const boxScore = boxEnd.querySelector('.score .number');
 const boxCorrect = boxEnd.querySelector('.correct .number');
@@ -14,6 +13,10 @@ const btnPlayAgain = boxEnd.querySelector('.play-btn');
 btnPlayAgain.addEventListener('click', () => {
     location.reload();
 })
+
+const soundTick = document.querySelector('.sounds-tick');
+const soundRight = document.querySelector('.sounds-right');
+const soundWrong = document.querySelector('.sounds-wrong');
 
 btnStart.addEventListener('click', function (e) {
     let timeStart = 3;
@@ -61,40 +64,54 @@ const app = {
             return `<div class="item-ans" data-index=${index}>${stripHtml(content)}</div>`;
         }).join('')}`;
 
+        const div = document.createElement('div');
+        div.classList.add('box-status', 'hidden');
+        document.querySelector('.wrapper-question').appendChild(div);
+
         listAnsItem.querySelectorAll('.item-ans').forEach((item) => {
             item.addEventListener('click', (e) => {
                 const value = e.target.dataset.index
+                const listAnsItems = Array.from(listAnsItem.querySelectorAll('.item-ans'));
                 
-                boxStatus.classList.remove('hidden');
+                div.classList.remove('hidden');
+
+                listAnsItems.forEach((item) => {
+                    item.style.backgroundColor = 'transparent';
+                    item.style.color = 'transparent';
+                })
+
 
                 if(questions.answer[value].status) {
+                    item.style.color = 'white';
                     item.style.backgroundColor = '#62C370';
-                    boxStatus.innerText = 'CORRECT'
-                    boxStatus.style.backgroundColor = '#62C370';
+                    div.innerText = 'CORRECT'
+                    div.style.backgroundColor = '#62C370';
 
                     // handle score
                     this.score += 500;
                     this.boxScore.innerText = this.score;
 
+                    
                     this.counterCorrect++;
-                } else {
-                    item.style.backgroundColor = '#EF3C69';
-                    boxStatus.style.backgroundColor = '#EF3C69';
-                    boxStatus.innerText = 'INCORRECT';
+                    soundRight.play();
 
-                    Array.from(listAnsItem.querySelectorAll('.item-ans')).find((item) => {
+                } else {
+                    item.style.color = 'white';
+                    item.style.backgroundColor = '#EF3C69';
+                    div.style.backgroundColor = '#EF3C69';
+                    div.innerText = 'INCORRECT';
+
+                    listAnsItems.find((item) => {
                         return questions.answer[item.dataset.index].status;
                     }).style.backgroundColor = '#62C370';
+                    listAnsItems.find((item) => {
+                        return questions.answer[item.dataset.index].status;
+                    }).style.color = 'white';
 
                     this.inCounterCorrect++;
+                    soundWrong.play();
                 }
 
-                setTimeout(() => {
-                    Array.from(listAnsItem.querySelectorAll('.item-ans')).forEach((item) => {
-                        item.style.backgroundColor = '';
-                    })
-                    boxStatus.classList.add('hidden');
-                }, 3000)
             })
         })
 
@@ -104,17 +121,17 @@ const app = {
         const { data:questions, response } = await client.get(`/questions/${id}`);
 
         if(response.ok) {
+            document.querySelector('.wrapper-question .box-status').remove();
             animation.classList.add('hidden')
             document.querySelector('.counter-ans span').innerText = `${id}`;
             document.querySelector('.wrapper-question').style.left = '0';
             this.render(questions);
-
         }
     },
 
     run : function () {
         let count = 1;
-        const timeNext = 5000;
+        const timeNext = 15000;
         this.getQuestions(count);
 
         const myInterval = setInterval(() => {
@@ -125,7 +142,7 @@ const app = {
         setTimeout(() => {
             this.handleBoxEnd();
             clearInterval(myInterval);
-        },8*timeNext)
+        }, 8*timeNext - 100)
 
     },
 
@@ -138,15 +155,20 @@ const app = {
         boxCorrect.innerText = this.counterCorrect;
         boxInCorrect.innerText = this.inCounterCorrect;
 
-        const value = Math.floor((this.counterCorrect)/(this.counterCorrect + this.inCounterCorrect) * 100);
-        console.log(document.querySelector('.progress-bar'));
+        const value = Math.floor((+this.counterCorrect)/(+this.counterCorrect + +this.inCounterCorrect) * 100);
+
         document.querySelector('.progress-bar').style.width = `${value}%`;
         document.querySelector('.progress-bar').innerText = `${value}%`;
     },
 
     start: function () {
         this.run();
+        soundTick.play();
+
         animation.classList.remove('hidden')
+        setTimeout(() => {
+            document.querySelector('.animation-time').classList.remove('hidden')
+        }, 500);
     }
     
 }
