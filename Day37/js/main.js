@@ -9,6 +9,7 @@ const app = {
     rootStart: document.querySelector('#root-start'),
     rootForm: document.querySelector('#root-form'),
     rootPosts: document.querySelector('#root-posts'),
+    rootProfile: document.querySelector('#root-profile'),
     rootCreateArticle: document.querySelector('#root-create-article'),
     
     query: {
@@ -109,7 +110,7 @@ const app = {
         //handle HTML
         const html = posts.data.map((post) => {
             return `<div class="post-item">
-            <div class="post-item-title">
+            <div class="post-item-title" id="${post.userId._id}">
             <div class="img">
                 <img src="../imageANDicon/onepice3.jpg" alt="">
             </div>
@@ -126,6 +127,12 @@ const app = {
 
         const postEl = this.rootPosts.querySelector('.posts');
         postEl.append(div);
+
+        Array.from(postEl.querySelectorAll('.post-item')).forEach((item) => {
+            item.addEventListener('click', () => {
+                this.getProfile(item.querySelector('.post-item-title').id)
+            })
+        })
 
         const createEl = this.rootPosts.querySelector('.item-create');
         createEl.addEventListener('click', () => {
@@ -235,13 +242,14 @@ const app = {
             btnSignOut.classList.add('logout');
             btnSignOut.innerText = 'Sign out'
 
-            if(this.isLogin()) {
-                const refreshToken = JSON.parse(localStorage.getItem('login_token')).data.token.refreshToken;
+            setTimeout(() => {
+                const token = JSON.parse(localStorage.getItem('login_token'))
+                const refreshToken = token.data.token.refreshToken;
 
-                console.log({refreshToken});
-                
-                this.refreshToken({ refreshToken })
-            }
+                this.renderProfile();
+                this.refreshToken({ refreshToken });
+            }, 1000);
+
         } else {
             this.showLogin();
         };
@@ -294,12 +302,14 @@ const app = {
 
     loading: function (status = true, text = 'Log in') {
         const button = document.querySelector('.btn-loading');
-        if(status === true) {
-            button.innerHTML = `<span class="spinner-border spinner-border-sm"></span> Loading...`;
-            button.disabled = true;  
-        } else {
-            button.innerHTML = `${text}`;
-            button.disabled = false;  
+        if(button) {
+            if(status) {
+                button.innerHTML = `<span class="spinner-border spinner-border-sm"></span> Loading...`;
+                button.disabled = true;  
+            } else {
+                button.innerHTML = `${text}`;
+                button.disabled = false;  
+            }
         }
     },
 
@@ -311,12 +321,13 @@ const app = {
 
     login: async function(data) {
         this.loading(); // Add Loading
-        let refreshToken = null;
+        let refreshToken = null, accessToken = null;
         try {
             // Call API
             const { response, data: token } = await client.post("/auth/login", data);
 
             refreshToken = token.data.refreshToken;
+            accessToken = token.data.accessToken;
             client.setToken(token.data.accessToken);
             this.loading(false) // Remove Loading    
 
@@ -331,6 +342,7 @@ const app = {
             this.getPosts(this.query);
             this.handleUi();
             this.refreshToken({ refreshToken }); 
+            this.renderProfile();
 
         } catch (e) {
             this.showError(e.message)
@@ -372,6 +384,7 @@ const app = {
             if(!response.ok) {
                 throw new Error(`${token.message}`);
             }
+            console.log(data);
 
             let refresh = token.data.token.refreshToken;
             client.setToken(token.data.token.accessToken);
@@ -412,39 +425,81 @@ const app = {
         }
     },
 
-     // getProfile: async function () {
+    renderProfile: async function () {
+        try {
+            let token = localStorage.getItem("login_token");
+            let accessToken = null;
 
-    //     try {
+            if(token) {
+                accessToken = JSON.parse(token).data.token.accessToken;
+            }
 
-    //         let token = localStorage.getItem("login_token");
-    //         let accessToken;
+            if(!accessToken) {
+                throw new Error("access Token not null");
+            }
 
-    //         if(token) {
-    //             accessToken = JSON.parse(token).access_token;
-    //         }
+            client.setToken(accessToken);
+            const {response, data:user} = await client.get("/users/profile");
 
-    //         if(!accessToken) {
-    //             throw new Error("access Token not null");
-    //         }
+            if(!response.ok) {
+                throw new Error("Unauthorize");
+            }
 
-    //         client.setToken(accessToken);
-    //         const {response, data:user} = await client.get("/auth/profile");
+            console.log(user);
 
-    //         if(!response.ok) {
-    //             throw new Error("Unauthorize");
-    //         }
-            
-    //         const profileEl = this.root.querySelector(".profile");
-    //         const profileName = this.root.querySelector(".profile .name");
-    //         profileName.innerText = user.name;
+            this.rootProfile.innerHTML = `<div class="profile-title" id="${user.data._id}">
+                <img src="../imageANDicon/onepice2.jpg" alt="avatar" class="profile-img">
+                <div class="title">${user.data.name}</div>
+                </div>`;
 
-    //     } catch (e) {
-    //         if(e.message) {
-    //             // this.logOut();
-    //         }
-    //     }
-    // },
+            this.rootProfile.querySelector('.profile-title').addEventListener('click', () => {
+                this.getProfile(this.rootProfile.querySelector('.profile-title').id)
+            })
 
+        } catch (e) {
+            console.log(e.message);
+        }
+    },
+
+    getProfile: async (id) => {
+        console.log(id);
+        try {
+            const {response, data:user} = await client.get(`/users/${id}`);
+
+            if(!response.ok) {
+                throw new Error("Unauthorize");
+            }
+
+            console.log(user);
+
+            //handle HTML
+            const stripHtml = (html) => html.replace(/(<([^>]+)>)/ig, "");
+
+            const html = user.data.blogs.map((post) => {
+                return `<div class="post-item">
+                <div class="post-item-title" id="${post._id}">
+                <div class="img">
+                    <img src="../imageANDicon/onepice3.jpg" alt="">
+                </div>
+                <div class="title-text">${stripHtml(post.title)}</div>
+                <div class="timeUp">${stripHtml(post.timeUp)}</div>
+            </div>
+            <div class="post-item-content">${stripHtml(post.content)}</div>
+            </div>`
+            }).join('');
+
+            const div = document.createElement('div');
+            div.classList.add('list-post-item');
+            div.innerHTML = html;
+
+            const postEl = document.querySelector('#root-blogs-profile .posts');
+            postEl.append(div);
+
+            document.querySelector('#root-posts').innerHTML = '';
+        } catch (e) {
+            console.log(e.message);
+        }
+    },
 
     start: function () {
         // Run APP

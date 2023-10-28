@@ -313,6 +313,36 @@ button {
   background-color: white;
 }
 
+#root-profile {
+  position: absolute;
+  top: 100px;
+  right: 40px;
+  color: white;
+}
+#root-profile .profile-title {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  cursor: pointer;
+}
+#root-profile .profile-title .profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-position: center;
+  object-fit: cover;
+}
+#root-profile .profile-title:hover {
+  text-decoration: underline;
+}
+
+#root-blogs-profile {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  z-index: 5;
+}
+
 .overlay {
   position: fixed;
   z-index: 1;
