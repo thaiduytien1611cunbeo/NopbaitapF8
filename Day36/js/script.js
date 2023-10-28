@@ -120,6 +120,8 @@ const app = {
     getQuestions : async function (id) {
         const { data:questions, response } = await client.get(`/questions/${id}`);
 
+        console.log(response);
+
         if(response.ok) {
             document.querySelector('.wrapper-question .box-status').remove();
             animation.classList.add('hidden')
