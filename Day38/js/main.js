@@ -231,7 +231,7 @@ const app = {
         return localStorage.getItem("login_token") ? true : false;
     },
 
-    render: function (posts) {
+    render: async function (posts) {
         this.renderPosts(posts);
         
         if(this.isLogin()) {
@@ -242,13 +242,8 @@ const app = {
             btnSignOut.classList.add('logout');
             btnSignOut.innerText = 'Sign out'
 
-            setTimeout(() => {
-                const token = JSON.parse(localStorage.getItem('login_token'))
-                const refreshToken = token.data.token.refreshToken;
-
-                this.renderProfile();
-                this.refreshToken({ refreshToken });
-            }, 1000);
+            await this.refreshToken();
+            this.renderProfile();
 
         } else {
             this.showLogin();
@@ -326,9 +321,6 @@ const app = {
             // Call API
             const { response, data: token } = await client.post("/auth/login", data);
 
-            refreshToken = token.data.refreshToken;
-            accessToken = token.data.accessToken;
-            client.setToken(token.data.accessToken);
             this.loading(false) // Remove Loading    
 
             if(!response.ok) {
@@ -341,8 +333,6 @@ const app = {
             //render
             this.getPosts(this.query);
             this.handleUi();
-            this.refreshToken({ refreshToken }); 
-            this.renderProfile();
 
         } catch (e) {
             this.showError(e.message)
@@ -367,44 +357,60 @@ const app = {
     },
 
     logOut: async function() {
+        this.refreshToken();
+
+        const token = JSON.parse(localStorage.getItem('login_token'))
+
+        client.setToken(token.data.token.accessToken);
 
         const { response, data } = await client.post("/auth/logout");
 
-        console.log(data);
         localStorage.removeItem('login_token');
 
-        this.getPosts(this.query);
-        this.handleUi();
+        location.reload();
     },
 
-    refreshToken: async function (data) {
+    refreshToken: async function () {
+        const token = JSON.parse(localStorage.getItem('login_token'))
+        let refreshToken = null;
+
+        if(token.data?.refreshToken) {
+            refreshToken = token.data.refreshToken;
+        }
+        if(token.data?.token?.refreshToken) {
+            refreshToken = token.data.token.refreshToken;
+        }
+
+        const data = { refreshToken };
+        console.log(data);
         try {
             const { response, data:token } = await client.post("/auth/refresh-token", data);
 
             if(!response.ok) {
                 throw new Error(`${token.message}`);
             }
-            console.log(data);
 
-            let refresh = token.data.token.refreshToken;
             client.setToken(token.data.token.accessToken);
 
             localStorage.setItem('login_token', JSON.stringify(token));
 
         } catch (e) {
-            console.log(e.message);
+            this.logOut();
         }
 
     },
 
     createArticle : async function (data) {
+        this.refreshToken();
         this.loading(); // Add Loading
         try {
             // Call API
-            console.log(data);
+            const tokenLocal = JSON.parse(localStorage.getItem('login_token'))
+            console.log(tokenLocal);
+            client.setToken(tokenLocal.data.token.accessToken);
+            
             const { response, data:token } = await client.post("/blogs", data);
 
-            console.log(response);
             console.log(token);
             this.loading(false) // Remove Loading    
 
