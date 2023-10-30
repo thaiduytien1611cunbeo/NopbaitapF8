@@ -99,43 +99,46 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  width: 70%;
+  width: 40%;
+  padding: 20px 0;
   margin: 0 auto;
   color: white;
 }
-.posts .post-item {
-  border-bottom: 1px solid rgb(38, 38, 38);
-  padding: 10px 50px;
+.posts .list-post-item {
+  width: 100%;
 }
-.posts .post-item .post-item-title {
+.posts .list-post-item .post-item {
+  border-bottom: 1px solid rgb(38, 38, 38);
+  padding: 20px 0;
+}
+.posts .list-post-item .post-item .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.posts .list-post-item .post-item .post-header .post-item-title {
   display: flex;
   align-items: center;
   column-gap: 10px;
   cursor: pointer;
 }
-.posts .post-item .post-item-title .img img {
+.posts .list-post-item .post-item .post-header .post-item-title .img img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
 }
-.posts .post-item .post-item-title:hover {
+.posts .list-post-item .post-item .post-header .post-item-title:hover {
   text-decoration: underline;
 }
-.posts .post-item .post-item-title .timeUp {
-  margin-left: 100px;
+.posts .list-post-item .post-item .post-header .time .created-at {
+  border-top: 1.5px solid rgba(44, 187, 99, 0.35);
+  border-bottom: 1.5px solid rgba(44, 187, 99, 0.35);
 }
-.posts .post-item .post-item-content {
-  width: 400px;
-  height: 300px;
-}
-.posts .post-item .post-item-contact {
-  margin-top: 20px;
-  display: flex;
-  column-gap: 15px;
-  cursor: pointer;
+.posts .list-post-item .post-item .post-item-content {
+  margin-top: 15px;
+  height: 250px;
 }
 
 .hidden {
@@ -144,6 +147,7 @@ button {
 
 .btn-sign {
   position: absolute;
+  z-index: 2;
   top: 40px;
   right: 40px;
   background-color: #c2fbd7;
@@ -336,18 +340,31 @@ button {
   text-decoration: underline;
 }
 
-#root-blogs-profile {
-  position: absolute;
-  left: 50%;
-  translate: -50%;
-  z-index: 5;
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+#myBtn:hover {
+  background-color: #555;
 }
 
 .overlay {
   position: fixed;
-  z-index: 1;
   inset: 0;
-  background-color: rgba(24, 24, 24, 0.635);
+  background-color: rgba(128, 128, 128, 0.411);
+  opacity: 0;
   visibility: hidden;
 }
 
