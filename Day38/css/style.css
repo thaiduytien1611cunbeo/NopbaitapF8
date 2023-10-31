@@ -262,13 +262,12 @@ button {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  width: 350px;
-  height: 420px;
+  width: 400px;
+  height: 550px;
   border-radius: 10px;
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 #root-create-article.show {
   opacity: 1;
@@ -280,14 +279,17 @@ button {
   padding: 15px;
   text-align: center;
 }
-#root-create-article .content {
+#root-create-article .content,
+#root-create-article .set-time {
   padding: 20px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
 #root-create-article .content input,
-#root-create-article .content textarea {
+#root-create-article .content textarea,
+#root-create-article .set-time input,
+#root-create-article .set-time textarea {
   background-color: #30445B;
   display: block;
   border: 1px solid white;
@@ -295,18 +297,23 @@ button {
   outline: none;
   padding-left: 20px;
   color: white;
-}
-#root-create-article .content .content-title {
   height: 40px;
 }
-#root-create-article .content .content-text {
+#root-create-article .content .content-text,
+#root-create-article .set-time .content-text {
   padding: 10px;
   height: 200px;
+}
+#root-create-article .content .set-item-title,
+#root-create-article .set-time .set-item-title {
+  margin-bottom: -15px;
+  font-size: 16px;
+  font-weight: 500;
 }
 #root-create-article .btn-create-article {
   background-color: rgb(190, 188, 188);
   width: 130px;
-  margin: 0 auto;
+  margin: 10px auto;
   border-radius: 5px;
   padding: 5px;
   position: relative;
@@ -363,9 +370,14 @@ button {
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(128, 128, 128, 0.411);
+  background-color: rgba(56, 55, 55, 0.411);
   opacity: 0;
   visibility: hidden;
+}
+
+.show-overlay {
+  opacity: 1;
+  visibility: visible;
 }
 
 /*# sourceMappingURL=style.css.map */

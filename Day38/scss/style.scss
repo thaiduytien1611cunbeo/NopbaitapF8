@@ -261,13 +261,12 @@ button {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    width: 350px;
-    height: 420px;
+    width: 400px;
+    height: 550px;
     border-radius: 10px;
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     &.show {
         opacity: 1;
         visibility: visible;
@@ -278,7 +277,8 @@ button {
         padding: 15px;
         text-align: center;
     }
-    .content {
+    .content,
+    .set-time {
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -292,19 +292,22 @@ button {
             outline: none;
             padding-left: 20px;
             color: white;
-        }
-        .content-title {
             height: 40px;
         }
         .content-text {
             padding: 10px;
             height: 200px;
         }
+        .set-item-title {
+            margin-bottom: -15px;
+            font-size: 16px;
+            font-weight: 500;
+        }
     }
     .btn-create-article {
         background-color: rgb(190, 188, 188);
         width: 130px;
-        margin: 0 auto;
+        margin: 10px auto;
         border-radius: 5px;
         padding: 5px;
         position: relative;
@@ -362,7 +365,12 @@ button {
 .overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(128, 128, 128, 0.411);
+    background-color: rgba(56, 55, 55, 0.411);
     opacity: 0;
     visibility: hidden;
+}
+
+.show-overlay {
+    opacity: 1;
+    visibility: visible;
 }

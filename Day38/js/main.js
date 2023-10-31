@@ -144,11 +144,11 @@ const app = {
         const createEl = this.rootPosts.querySelector('.item-create');
         createEl.addEventListener('click', () => {
             this.rootCreateArticle.classList.add('show');
-            document.querySelector('.overlay').style.visibility = 'visible';
+            document.querySelector('.overlay').classList.add('show-overlay');
         })
         document.querySelector('.overlay').addEventListener('click', () => {
             this.rootCreateArticle.classList.remove('show');
-            document.querySelector('.overlay').style.visibility = 'hidden';
+            document.querySelector('.overlay').classList.remove('show-overlay');
         })
     },
 
@@ -289,12 +289,16 @@ const app = {
             else if (e.target.classList.contains('form-create-article') && this.isLogin()) {
                 const titleEl = e.target.querySelector('.content-title');
                 const contentEl = e.target.querySelector('.content-text');
+                const timeUpEl = e.target.querySelector('.set-time-content');
 
                 const title = titleEl.value;
                 const content = contentEl.value;
+                const time = timeUpEl.value;
+
 
                 titleEl.value = '';
                 contentEl.value = '';
+                timeUpEl.value = '';
 
                 this.createArticle({ title, content });
             }

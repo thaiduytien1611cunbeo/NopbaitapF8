@@ -10,7 +10,7 @@ export const handleDate = (data) => {
     if(hour < 10) text = 'sáng';
     else if(hour <= 12) text = 'trưa';
     else if(hour <= 18) text = 'chiều';
-    else if(hour <= 20) text = 'tối'
+    else if(hour <= 22) text = 'tối'
     else text = 'đêm';
 
     if(hour >= 12) hour -=12;
