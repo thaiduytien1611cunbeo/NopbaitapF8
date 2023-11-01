@@ -373,13 +373,15 @@ const app = {
     },
 
     logOut: async function() {
-        this.refreshToken();
+        const { response, data } = await client.post("/auth/logout");
+        if(!response.ok) {
+            this.refreshToken();
+        }
 
         const token = JSON.parse(localStorage.getItem('login_token'))
 
         client.setToken(token.data.token.accessToken);
 
-        const { response, data } = await client.post("/auth/logout");
 
         localStorage.removeItem('login_token');
 
@@ -411,13 +413,14 @@ const app = {
             localStorage.setItem('login_token', JSON.stringify(token));
 
         } catch (e) {
-            this.logOut();
+            // this.logOut();
         }
 
     },
 
     createArticle : async function (data) {
-        this.refreshToken();
+        const stripHtml = (html) => html.replace(/(<([^>]+)>)/ig, "");
+
         this.loading(); // Add Loading
         try {
             // Call API
@@ -426,17 +429,37 @@ const app = {
             client.setToken(tokenLocal.data.token.accessToken);
             
             const { response, data:token } = await client.post("/blogs", data);
-
-            console.log(token);
             this.loading(false) // Remove Loading    
+            console.log(token.data._id);
+            const { res, data:_token } = await client.get(`/blogs/${token.data._id}`);
+
+console.log(_token);
+            const html = `<div class="post-item"">
+            <div class="post-header">
+                <div class="post-item-title" id="${_token.data.userId._id}">
+                    <div class="img">
+                        <img src="../imageANDicon/onepice3.jpg" alt="">
+                    </div>
+                    <div class="title-text">${stripHtml(_token.data.title)}</div>
+                </div>
+                <div class="time">
+                    <div class="created-at">${stripHtml(handleDate(_token.data.createdAt))}</div>
+                    <div class="timer">${stripHtml(timerFc(_token.data.createdAt))}</div>
+                </div>
+            </div>
+            <div class="post-item-content">${stripHtml(_token.data.content)}</div>
+            </div>`;
+            const div = document.createElement('div');
+            div.innerHTML = html;
+            this.rootPosts.querySelector('.posts .list-post-item').prepend(div);
 
             if(!response.ok) {
+                this.refreshToken();
+                this.createArticle();
                 throw new Error(`${token.message}`);
             }
-
             //render
-            this.getPosts(this.query);
-            this.handleUi();
+            
         } catch (e) {
             console.log(e.message)
         }

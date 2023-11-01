@@ -262,7 +262,7 @@ button {
     left: 50%;
     translate: -50% -50%;
     width: 400px;
-    height: 550px;
+    height: 450px;
     border-radius: 10px;
     color: white;
     display: flex;
@@ -279,7 +279,7 @@ button {
     }
     .content,
     .set-time {
-        padding: 20px;
+        padding: 10px 20px;
         display: flex;
         flex-direction: column;
         row-gap: 20px;
@@ -290,13 +290,13 @@ button {
             border: 1px solid white;
             border-radius: 5px;
             outline: none;
-            padding-left: 20px;
+            padding-left: 10px;
             color: white;
             height: 40px;
         }
         .content-text {
             padding: 10px;
-            height: 200px;
+            height: 150px;
         }
         .set-item-title {
             margin-bottom: -15px;
@@ -364,6 +364,7 @@ button {
 
 .overlay {
     position: fixed;
+    z-index: 1;
     inset: 0;
     background-color: rgba(56, 55, 55, 0.411);
     opacity: 0;
