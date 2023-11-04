@@ -21,12 +21,38 @@ const app = {
     heightUpdate: 600,
     isScroll: true,
 
+    
+    handleLink : (value) => {
+        value = value.trim();
+    
+        const regexLinkYou = /(http|https):\/\/([a-z0-9][a-z0-9-_\.]*\.|)(youtu\.be\/|youtube\.com\/(watch\?(.*&)?v=|(embed|v)\/))([^\?&"'>]\S+)/g;
+    
+        const regexLink = /((http|https):\/\/([a-z0-9][a-z0-9-_\.]*\.|)[a-z0-9][a-z0-9-_\.]*\.[a-z]{2,}(:\d{2,}|)(\/*|\/[^\s]+)(\S)*)/g; 
+    
+        if(value.match(regexLink)) {
+            value.match(regexLink).forEach(str => {
+                if(regexLinkYou.test(str)) {
+                    value = value.replace(str, `<br><iframe width="560" height="315" src="https://www.youtube.com/embed/${str.slice(str.indexOf('v='))}/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe><br>`)
+                }
+                else {
+                    value = value.replace(str, `<a class="link" href="${str}">${str}</a><br>`)
+                }
+            });
+        }
+
+        return value
+    },
+
     getPosts: async function (query = {}) {
         let queryString = new URLSearchParams(query).toString();
         queryString = queryString ? "?" + queryString : "";
         const { data:posts, response } = await client.get(`/blogs${queryString}`);
 
-        if(response.ok) this.render(posts);
+        if(!response.ok) {
+            await this.refreshToken();
+            this.getPosts(this.query)
+        }
+        else this.render(posts);
     },
 
     renderPosts: function (posts) {
@@ -124,7 +150,7 @@ const app = {
                     <div class="timer">${stripHtml(timerFc(post.createdAt))}</div>
                 </div>
             </div>
-            <div class="post-item-content">${stripHtml(post.content)}</div>
+            <div class="post-item-content">${this.handleLink(stripHtml(post.content))}</div>
         </div>`
         }).join('');
 
@@ -255,7 +281,6 @@ const app = {
             btnSignOut.classList.add('logout');
             btnSignOut.innerText = 'Sign out'
 
-            await this.refreshToken();
             this.renderProfile();
 
         } else {
@@ -376,6 +401,7 @@ const app = {
         const { response, data } = await client.post("/auth/logout");
         if(!response.ok) {
             this.refreshToken();
+            this.logOut()
         }
 
         const token = JSON.parse(localStorage.getItem('login_token'))
@@ -389,6 +415,7 @@ const app = {
     },
 
     refreshToken: async function () {
+        console.log('refreshToken');
         const token = JSON.parse(localStorage.getItem('login_token'))
         let refreshToken = null;
 
@@ -400,13 +427,14 @@ const app = {
         }
 
         const data = { refreshToken };
-        console.log(data);
         try {
             const { response, data:token } = await client.post("/auth/refresh-token", data);
 
             if(!response.ok) {
                 throw new Error(`${token.message}`);
             }
+
+            console.log('refreshToken');
 
             client.setToken(token.data.token.accessToken);
 
@@ -433,7 +461,6 @@ const app = {
             console.log(token.data._id);
             const { res, data:_token } = await client.get(`/blogs/${token.data._id}`);
 
-console.log(_token);
             const html = `<div class="post-item"">
             <div class="post-header">
                 <div class="post-item-title" id="${_token.data.userId._id}">
@@ -447,7 +474,7 @@ console.log(_token);
                     <div class="timer">${stripHtml(timerFc(_token.data.createdAt))}</div>
                 </div>
             </div>
-            <div class="post-item-content">${stripHtml(_token.data.content)}</div>
+            <div class="post-item-content">${this.handleLink(stripHtml(_token.data.content))}</div>
             </div>`;
             const div = document.createElement('div');
             div.innerHTML = html;
@@ -472,6 +499,10 @@ console.log(_token);
 
             if(token) {
                 accessToken = JSON.parse(token).data.token.accessToken;
+            } else {
+                console.log('sai');
+                this.refreshToken();
+                this.renderProfile();
             }
 
             if(!accessToken) {
@@ -528,7 +559,7 @@ console.log(_token);
                         <div class="timer">${stripHtml(timerFc(post.createdAt))}</div>
                     </div>
                 </div>
-                <div class="post-item-content">${stripHtml(post.content)}</div>
+                <div class="post-item-content">${this.handleLink(stripHtml(post.content))}</div>
             </div>`
             }).join('');
 

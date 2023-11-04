@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="root-start">
+        <div class="loading-start">
+            <img src="img/logo-ig.png" alt="logo">
+            <img src="img/form-ig.png" alt="logo">
+        </div>
+    </div>
+
+    <div id="root-posts">
+        
+    </div>
+
+    <div id="root-profile">
+        
+    </div>
+
+    <div id="root-create-article">
+        <form class="form-create-article">
+            <h3 class="title">Create new post</h3>
+            <div class="content">
+                <input type="text" class="content-title" placeholder="Please enter the title" required>
+                <textarea class="content-text" placeholder="content here..." required></textarea>
+            </div>
+            <div class="set-time">
+                <p class="set-item-title">Set time to Post</p>
+                <input type="date" class="set-time-content" required>
+            </div>
+            <button class="btn-create-article btn-loading-create">Create Article</button>
+        </form>
+    </div>
+
+    <div id="root-form" class="hidden">
+        
+    </div>
+
+    <button id="myBtn" title="Go to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <div class="overlay"></div>
+
+
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
