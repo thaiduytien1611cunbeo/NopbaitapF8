@@ -26,19 +26,21 @@ const app = {
         value = value.trim();
     
         const regexLinkYou = /(http|https):\/\/([a-z0-9][a-z0-9-_\.]*\.|)(youtu\.be\/|youtube\.com\/(watch\?(.*&)?v=|(embed|v)\/))([^\?&"'>]\S+)/g;
-    
         const regexLink = /((http|https):\/\/([a-z0-9][a-z0-9-_\.]*\.|)[a-z0-9][a-z0-9-_\.]*\.[a-z]{2,}(:\d{2,}|)(\/*|\/[^\s]+)(\S)*)/g; 
+        const regexEmail = /([^\s@]+@[^\s@]+\.[^\s@]+)/;
     
         if(value.match(regexLink)) {
             value.match(regexLink).forEach(str => {
                 if(regexLinkYou.test(str)) {
-                    value = value.replace(str, `<br><iframe width="560" height="315" src="https://www.youtube.com/embed/${str.slice(str.indexOf('v='))}/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe><br>`)
+                    value = value.replace(str, `<br><iframe width="560" height="315" src="https://www.youtube.com/embed/${str.slice(str.indexOf('v=') + 2)}/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe><br>`)
                 }
                 else {
                     value = value.replace(str, `<a class="link" href="${str}">${str}</a><br>`)
                 }
             });
         }
+
+        value = value.replace(regexEmail, `<p class="email">$1</p>`)
 
         return value
     },
