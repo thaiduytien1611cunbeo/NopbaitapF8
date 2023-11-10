@@ -1,0 +1,51 @@
+// .list-message {
+//   display: flex;
+//   flex-direction: column;
+//   row-gap: 10px;
+//   position: relative;
+//   .message {
+//     position: absolute;
+//     display: flex;
+//     right: -100%;
+//     align-items: center;
+//     width: 300px;
+//     height: 80px;
+//     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+//       rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+//     border-radius: 5px;
+//     font-size: 16px;
+//     padding: 0 5px 0 15px;
+//     line-height: 30px;
+//     animation-name: translate;
+//     animation-duration: 4s;
+//   }
+// }
+
+// @keyframes translate {
+//   0% {
+//     right: -100%;
+//   }
+//   15% {
+//     right: 5%;
+//   }
+//   20% {
+//     right: 3%;
+//   }
+//   83% {
+//     right: 3%;
+//   }
+//   85% {
+//     right: 5%;
+//   }
+//   100% {
+//     right: -100%;
+//   }
+// }
+
+// <div class="list-message">
+//         <div class="message">Chào mừng bạn quay trở lại</div>
+//         <div class="message">
+//           Bạn có chắc chắn muốn xóa Item này <br />
+//           Hãy CLick vào đây
+//         </div>
+//       </div>
