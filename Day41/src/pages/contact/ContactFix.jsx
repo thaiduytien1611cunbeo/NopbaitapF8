@@ -5,20 +5,26 @@ export class ContactFix extends Component {
     super(props);
   }
 
+  handleCheckCompleted = () => {};
+
   render() {
     return (
       <>
         <div className="item-contact item-contact-fix" id="item-contact">
           <div className="contact-left">
             <label htmlFor="check">Not Completed</label>
-            <input type="checkbox" className="input-check" id="check" />
+            <input type="checkbox" className="input-check" id="check" checked />
           </div>
           <div className="contact-right">
-            <button className="btn-exit" onClick={this.props.handleClickExit}>
+            <button className="btn-exit" onClick={this.props.handleClick}>
               Thoát
             </button>
-            <button className="btn-fix">Sửa</button>
-            <button className="btn-delete">Xóa</button>
+            <button className="btn-fix" onClick={this.props.handleClick}>
+              Sửa
+            </button>
+            <button className="btn-delete" onClick={this.props.deleteForm}>
+              Xóa
+            </button>
           </div>
         </div>
       </>

@@ -9,10 +9,12 @@ export class ContactDefault extends Component {
     return (
       <>
         <div className="item-contact" id="item-contact">
-          <button className="btn-fix" onClick={this.props.handleClickFix}>
+          <button className="btn-fix" onClick={this.props.handleClick}>
             Sửa
           </button>
-          <button className="btn-delete">Xóa</button>
+          <button className="btn-delete" onClick={this.props.deleteForm}>
+            Xóa
+          </button>
         </div>
       </>
     );

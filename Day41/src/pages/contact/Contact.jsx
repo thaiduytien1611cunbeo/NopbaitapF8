@@ -10,22 +10,24 @@ export class Contact extends Component {
     };
   }
 
-  handleClickFix = () => {
+  handleClick = () => {
+    this.props.selectInput();
     this.setState({
-      isClickFix: true,
-    });
-  };
-  handleClickExit = () => {
-    this.setState({
-      isClickFix: false,
+      isClickFix: !this.state.isClickFix,
     });
   };
 
   render() {
     return this.state.isClickFix ? (
-      <ContactFix handleClickExit={this.handleClickExit} />
+      <ContactFix
+        handleClick={this.handleClick}
+        deleteForm={this.props.deleteForm}
+      />
     ) : (
-      <ContactDefault handleClickFix={this.handleClickFix} />
+      <ContactDefault
+        handleClick={this.handleClick}
+        deleteForm={this.props.deleteForm}
+      />
     );
   }
 }

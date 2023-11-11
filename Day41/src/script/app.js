@@ -5,12 +5,20 @@ const { SERVER_API_AUTH, PAGE_LIMIT } = config;
 
 client.setUrl(SERVER_API_AUTH);
 
-export const app = {
-  isLogin: false,
-  listPost: null,
+export let listTodo = null;
 
-  getApiKey: async function (email) {
+export const checkLogin = async () => {
+  const email = client.getCookie("userEmail");
+  if (!email) {
+    return false;
+  }
+  return true;
+};
+
+export const getApiKey = async () => {
+  if (!(await checkLogin())) {
     try {
+      let email = prompt("Please enter your email!", "example@example.com");
       const { data, response } = await client.get(`/api-key?email=${email}`);
 
       if (!response.ok) {
@@ -18,63 +26,44 @@ export const app = {
       }
 
       const apiKey = data.data.apiKey;
-
       client.setApiKey(apiKey);
-
       client.setDataCookie(apiKey, email);
-
-      this.isLogin = true;
-
-      this.getListTodo();
     } catch (e) {
       console.log(e);
     }
-  },
-
-  checkLogin: function () {
-    const email = client.getCookie("userEmail");
-    if (!email) {
-      this.importEmail();
-    } else {
-      this.getApiKey(email);
-    }
-  },
-
-  importEmail: function () {
-    window.addEventListener("load", () => {
-      let email = prompt("Please enter your email!", "example@example.com");
-      this.getApiKey(email);
-    });
-  },
-
-  getListTodo: async function () {
-    if (this.isLogin) {
-      try {
-        const { data, response } = await client.get(`/todos`);
-
-        this.listPost = data.data.listTodo;
-        if (!response.ok) {
-          throw new Error("Email không hợp lệ");
-        }
-
-        console.log(data.data.listTodo);
-        return data.data.listTodo;
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  },
-
-  preventSubmit: function () {
-    document.addEventListener("submit", function (e) {
-      e.preventDefault();
-    });
-  },
-
-  start: function () {
-    this.checkLogin();
-    this.preventSubmit();
-  },
+  } else {
+    const url = `/api-key?email=${client.getCookie("userEmail")}`;
+    const { data, response } = await client.get(url);
+    const apiKey = data.data.apiKey;
+    client.setApiKey(apiKey);
+  }
+  return true;
 };
 
-app.start();
+export const getListTodo = async function () {
+  if (await getApiKey()) {
+    try {
+      const { data, response } = await client.get(`/todos`);
+
+      const listPost = data.data.listTodo;
+      if (!response.ok) {
+        throw new Error("Email không hợp lệ");
+      }
+
+      listTodo = listPost;
+
+      return data.data.listTodo;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+};
+
+const preventSubmit = function () {
+  document.addEventListener("submit", function (e) {
+    e.preventDefault();
+  });
+};
+
+preventSubmit();
+console.log(getListTodo());

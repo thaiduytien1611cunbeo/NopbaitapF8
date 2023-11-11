@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Default from "./pages/Default";
 import Loading from "./pages/Loading";
+import { checkLogin, getListTodo } from "./script/app";
 
 export class App extends Component {
   constructor() {
