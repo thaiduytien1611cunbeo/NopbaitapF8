@@ -1,21 +1,19 @@
 import React, { Component } from "react";
 import Default from "./pages/Default";
-import Loading from "./pages/Loading";
-import { checkLogin, getListTodo } from "./script/app";
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoading: false,
-    };
+  constructor(props) {
+    super(props);
+    // this.state = {
+    //   isLoading: false,
+    // };
   }
 
   render() {
     return (
       <>
         <Default />
-        {this.state.isLoading && <Loading />}
+        {/* {this.state.isLoading && <Loading />} */}
       </>
     );
   }
