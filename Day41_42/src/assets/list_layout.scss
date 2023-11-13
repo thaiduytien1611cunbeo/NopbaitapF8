@@ -1,0 +1,81 @@
+#root-list {
+  width: 100%;
+  .list-todo {
+    width: 100%;
+    .form-item {
+      width: 100%;
+      margin-bottom: 25px;
+      border-radius: 5px;
+      padding: 15px 30px;
+      background-color: #fff;
+      .input-item {
+        width: 100%;
+        padding: 5px 10px;
+        font-size: 18px;
+        color: rgb(95, 94, 94);
+        outline: none;
+      }
+      .item-contact-fix {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+        .contact-left label {
+          display: flex;
+          align-items: center;
+          column-gap: 10px;
+          color: rgb(95, 94, 94);
+          .input-check {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      .item-contact {
+        margin: 15px 0;
+        button {
+          padding: 10px 18px;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          margin-right: 5px;
+          &.btn-fix {
+            background-color: #14b8a6;
+            &:hover {
+              background-color: #0b9a89;
+            }
+          }
+          &.btn-delete {
+            background-color: rgb(245, 19, 19);
+            &:hover {
+              background-color: #b91c1c;
+            }
+          }
+          &.btn-exit {
+            background-color: #e85b23;
+            &:hover {
+              background-color: #c2410c;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#root-list {
+  width: 100%;
+  .item-space {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    font-size: 20px;
+  }
+}
