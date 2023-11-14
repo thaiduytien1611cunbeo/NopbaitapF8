@@ -114,7 +114,7 @@ export class ItemTodo extends Component {
   };
 
   render() {
-    // console.log("render");
+    console.log("render");
     return (
       <>
         <form className="form-item" id={this.props.id}>
@@ -122,10 +122,7 @@ export class ItemTodo extends Component {
             type="text"
             className="input-item"
             defaultValue={this.state.updateValue}
-            onChange={debounce(() => {
-              console.log(this.handleChange);
-              this.handleChange;
-            }, 200)}
+            onChange={this.handleChange}
             disabled={this.state.disabled}
             style={this.state.style}
           />

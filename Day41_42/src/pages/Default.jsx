@@ -112,18 +112,19 @@ export class Default extends Component {
 
   handleAddTodo = async (e) => {
     const value = this.state.valueInput;
-    e.target.previousSibling.value = "";
 
     if (value.trim()) {
       this.setState({
         listTodo: [await addTodo(value), ...this.state.listTodo],
       });
     }
+
+    e.target.previousSibling.value = "";
   };
 
   handleSearchTodo = async (e) => {
     const value = this.state.valueInput;
-    console.log("hello");
+
     if (value.trim()) {
       this.setState({
         listTodo: await searchTodo(value),
@@ -153,10 +154,7 @@ export class Default extends Component {
               type="text"
               className="input"
               placeholder="Thêm một việc làm mới"
-              onChange={debounce(() => {
-                console.log(this.handleChange);
-                this.handleChange;
-              }, 2000)}
+              onChange={this.handleChange}
             />
             <button className="btn btn-add" onClick={this.handleAddTodo}>
               Thêm mới
