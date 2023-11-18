@@ -5,8 +5,8 @@ function Message() {
   return (
     <>
       <div className="message">
-        hsdf
-        <span className="progress" style={{ backgroundColor: "red" }}></span>
+        Mừng bạn quay trở lại
+        <span className="progress" style={{ backgroundColor: "green" }}></span>
       </div>
     </>
   );
