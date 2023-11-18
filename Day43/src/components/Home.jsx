@@ -34,6 +34,7 @@ function Home() {
 
       client.setApiKey(client.getCookie("apiKey"));
     } else {
+      document.cookie = "username=; apiKey=";
       location.reload();
     }
   };

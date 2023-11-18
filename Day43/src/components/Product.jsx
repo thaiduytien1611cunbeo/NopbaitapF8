@@ -42,7 +42,6 @@ const Product = () => {
       !listCart.find(({ _id }) => _id === product._id) ||
       listCart.length === 0
     ) {
-      console.log(product.quantity);
       setListCart([...listCart, product]);
     }
   };
