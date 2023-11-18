@@ -5,6 +5,7 @@ import { client } from "../script/client";
 
 const Product = () => {
   const [list, setList] = useState([]);
+  const [message, setMessage] = useState(false);
   const [listCart, setListCart] = useState([]);
 
   useEffect(() => {
@@ -53,6 +54,7 @@ const Product = () => {
     }));
 
     setListCart([]);
+    setMessage(true);
 
     const url = `/orders`;
     const { data, response } = await client.post(url, listPay);
@@ -63,6 +65,14 @@ const Product = () => {
 
   return (
     <>
+      {message ? (
+        <div className="message">
+          Chúc mừng bạn đã thanh toán thành công
+          <span className="progress" style={{ backgroundColor: "blue" }}></span>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className="shop">
         <h1>Welcome to Shop!</h1>
         <ul className="list-products">
