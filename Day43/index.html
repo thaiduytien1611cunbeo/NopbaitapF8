@@ -9,7 +9,11 @@
   <body>
     <div id="root"></div>
 
-    <script src="./src/script/app.js"></script>
+    <script>
+      document.addEventListener("submit", function (e) {
+        e.preventDefault();
+      });
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

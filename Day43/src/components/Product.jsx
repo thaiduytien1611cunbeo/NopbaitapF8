@@ -28,7 +28,6 @@ const Product = () => {
     if (listCart.length) {
       listCart.forEach((item) => {
         if (item._id === product._id) {
-          console.log(1);
           item.count++;
           item.totalPrice = item.count * price;
           item.quantity--;
@@ -42,22 +41,23 @@ const Product = () => {
       !listCart.find(({ _id }) => _id === product._id) ||
       listCart.length === 0
     ) {
-      console.log(1);
+      console.log(product.quantity);
       setListCart([...listCart, product]);
     }
   };
 
   const handlePaying = async () => {
-    setListCart([]);
-
-    const listPay = listCart.map((item) => ({
+    let listPay = listCart.map((item) => ({
       productId: item._id,
       quantity: item.count,
     }));
 
-    const url = `/orders`;
-    const [data, response] = await client.post(url, listPay);
+    setListCart([]);
 
+    const url = `/orders`;
+    const { data, response } = await client.post(url, listPay);
+
+    console.log(response);
     console.log(data);
   };
 
@@ -69,7 +69,9 @@ const Product = () => {
           {list.map(({ _id, name, price, image, quantity }) => (
             <li className="product-item" key={_id}>
               <form className="form-item">
-                <img src={image} className="img" />
+                <div>
+                  <img src={image} className="img" />
+                </div>
                 <h2 className="title">{name}</h2>
                 <div className="active">
                   <div className="price">${price}</div>

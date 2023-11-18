@@ -24,14 +24,18 @@ function Home() {
       type: "Loading/removeLoading",
     });
 
-    dispatch({
-      type: "Product/showProduct",
-    });
+    if (response.ok) {
+      dispatch({
+        type: "Product/showProduct",
+      });
 
-    const { apiKey } = data.data;
-    client.setDataCookie(apiKey, email);
+      const { apiKey } = data.data;
+      client.setDataCookie(apiKey, email);
 
-    client.setApiKey(client.getCookie("apiKey"));
+      client.setApiKey(client.getCookie("apiKey"));
+    } else {
+      location.reload();
+    }
   };
 
   return (
