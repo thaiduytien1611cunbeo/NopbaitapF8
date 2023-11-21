@@ -1,0 +1,94 @@
+body {
+  height: 100vh;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+}
+.form-send-email {
+  width: 400px;
+  height: 500px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  position: relative;
+  left: 50%;
+  translate: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  top: 20px;
+  background-color: #fff;
+  .title {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 15px;
+    .img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  label {
+    position: relative;
+    top: 0;
+  }
+  .input_email {
+    width: 350px;
+    height: 50px;
+    padding: 10px;
+    font-size: 17px;
+    &:hover {
+      border: 2px solid #4caf50;
+      border-radius: 5px;
+    }
+  }
+  textarea {
+    width: 350px;
+    font-size: 16px;
+    padding: 10px;
+    height: 170px;
+    &:hover {
+      border: 2px solid #4caf50;
+      border-radius: 5px;
+    }
+  }
+  button.btn {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 8px;
+    background-color: #5ebe61;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      background-color: #4caf50;
+    }
+  }
+}
+
+div.input_form {
+  position: relative;
+  span.label {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 18px;
+    padding: 0px 5px;
+    background-color: white;
+    color: gray;
+    transition: all 0.5s linear;
+  }
+  &:hover {
+    span.label {
+      left: 250px;
+    }
+  }
+}

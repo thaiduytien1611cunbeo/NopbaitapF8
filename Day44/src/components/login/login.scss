@@ -1,0 +1,17 @@
+.form-login {
+  width: 400px;
+  height: 250px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  left: 50%;
+  translate: -50%;
+  top: 100px;
+  text-align: center;
+  background-color: #fff;
+  .title,
+  .text {
+    margin: 20px 0;
+  }
+}
