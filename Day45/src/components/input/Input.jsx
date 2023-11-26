@@ -6,7 +6,8 @@ const Input = () => {
   const inputRef = useRef();
   const numberRandom = useSelector((state) => state.numberRandom);
   const dispatch = useDispatch();
-  console.log(numberRandom);
+  const counter = useSelector((state) => state.counter);
+  const maxNumber = useSelector((state) => state.maxNumber);
 
   useEffect(() => {
     inputRef.current.focus();
@@ -28,26 +29,35 @@ const Input = () => {
     });
   });
 
+  useEffect(() => {
+    if (counter === 0) {
+      inputRef.current.readOnly = "true";
+    }
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({
       type: "Input/setCounter",
     });
-    const valueNumber = inputRef.current.value;
+    const valueNumber = +inputRef.current.value;
     inputRef.current.value = "";
 
-    if (valueNumber < numberRandom) {
-      dispatch({
-        type: "Input/setSuggestIncrement",
-      });
-    } else if (valueNumber > numberRandom) {
-      dispatch({
-        type: "Input/setSuggestDecrement",
-      });
-    } else {
-      dispatch({
-        type: "Input/setSuggestTrue",
-      });
+    if (valueNumber !== 0) {
+      if (valueNumber < numberRandom) {
+        console.log("tang");
+        dispatch({
+          type: "Input/setSuggestIncrement",
+        });
+      } else if (valueNumber > numberRandom) {
+        dispatch({
+          type: "Input/setSuggestDecrement",
+        });
+      } else {
+        dispatch({
+          type: "Input/setSuggestTrue",
+        });
+      }
     }
   };
 
@@ -61,6 +71,9 @@ const Input = () => {
           placeholder="Thử một số"
           ref={inputRef}
           autoFocus
+          min={0}
+          max={maxNumber}
+          readOnly={false}
         />
       </label>
     </form>

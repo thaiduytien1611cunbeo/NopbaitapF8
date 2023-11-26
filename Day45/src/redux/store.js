@@ -25,7 +25,9 @@ const rootReducer = (state = initialState, action) => {
       });
     }
     case "Input/setCounter": {
-      return (state = { ...state, counter: state.counter - 1 });
+      if (state.counter > 0) {
+        return (state = { ...state, counter: state.counter - 1 });
+      }
     }
     case "Input/setSuggestIncrement": {
       return (state = { ...state, suggest: "Hmmm... Bạn nên TĂNG 1 xíu" });
@@ -35,6 +37,9 @@ const rootReducer = (state = initialState, action) => {
     }
     case "Input/setSuggestTrue": {
       return (state = { ...state, suggest: "Xin chúc mừng bạn đã đúng" });
+    }
+    case "Input/setSuggestFalse": {
+      return (state = { ...state, suggest: "Hết lượt rồi má" });
     }
     default: {
       return state;
