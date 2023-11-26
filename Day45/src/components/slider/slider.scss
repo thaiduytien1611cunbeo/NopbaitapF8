@@ -28,6 +28,10 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  span {
+    color: #728989;
+    font-weight: bold;
+  }
 }
 
 .tooltip::after {

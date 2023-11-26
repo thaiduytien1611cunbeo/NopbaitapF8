@@ -30,6 +30,9 @@ const Input = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch({
+      type: "Input/setCounter",
+    });
     const valueNumber = inputRef.current.value;
     inputRef.current.value = "";
 

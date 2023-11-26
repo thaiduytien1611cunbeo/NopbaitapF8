@@ -3,11 +3,11 @@ import randomInt from "../script/random";
 
 const initialState = {
   isDarkApp: false,
-  number: localStorage.getItem("number"),
-  maxCounter: Math.ceil(Math.log2(localStorage.getItem("number"))),
-  counter: Math.ceil(Math.log2(localStorage.getItem("number"))),
+  number: localStorage.getItem("number") || 1000,
+  maxCounter: Math.ceil(Math.log2(localStorage.getItem("number") || 1000)),
+  counter: Math.ceil(Math.log2(localStorage.getItem("number") || 1000)),
   maxNumber: 2000,
-  numberRandom: randomInt(0, localStorage.getItem("number")),
+  numberRandom: randomInt(0, localStorage.getItem("number") || 1000),
   suggest: "",
 };
 
@@ -24,11 +24,9 @@ const rootReducer = (state = initialState, action) => {
         counter: Math.ceil(Math.log2(number)),
       });
     }
-    // case "Slider/setCounter": {
-    //   state = { ...state, number: action.payload };
-    //   localStorage.setItem("number", action.payload);
-    //   console.log(action.payload);
-    // }
+    case "Input/setCounter": {
+      return (state = { ...state, counter: state.counter - 1 });
+    }
     case "Input/setSuggestIncrement": {
       return (state = { ...state, suggest: "Hmmm... Bạn nên TĂNG 1 xíu" });
     }
